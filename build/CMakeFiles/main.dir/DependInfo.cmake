@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/timursalihov/OOP_MAI/LW1/crazyChecker.cpp" "CMakeFiles/tests.dir/crazyChecker.cpp.o" "gcc" "CMakeFiles/tests.dir/crazyChecker.cpp.o.d"
-  "/Users/timursalihov/OOP_MAI/LW1/tests.cpp" "CMakeFiles/tests.dir/tests.cpp.o" "gcc" "CMakeFiles/tests.dir/tests.cpp.o.d"
+  "/Users/timursalihov/OOP_MAI/LW1/crazyChecker.cpp" "CMakeFiles/main.dir/crazyChecker.cpp.o" "gcc" "CMakeFiles/main.dir/crazyChecker.cpp.o.d"
+  "/Users/timursalihov/OOP_MAI/LW1/main.cpp" "CMakeFiles/main.dir/main.cpp.o" "gcc" "CMakeFiles/main.dir/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

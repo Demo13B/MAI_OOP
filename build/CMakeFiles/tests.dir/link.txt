@@ -1,1 +1,1 @@
-/usr/bin/clang++ -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/tests.dir/tests.cpp.o -o tests  lib/libgtest_main.a lib/libgtest.a 
+/usr/bin/clang++ -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/tests.dir/tests.cpp.o CMakeFiles/tests.dir/crazyChecker.cpp.o -o tests  lib/libgtest_main.a lib/libgtest.a 

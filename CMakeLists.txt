@@ -5,7 +5,8 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(googletest)
 
-add_executable(tests tests.cpp)
+add_executable(tests tests.cpp crazyChecker.cpp)
+add_executable(main main.cpp crazyChecker.cpp)
 target_link_libraries(tests PRIVATE GTest::gtest_main)
 
 include(GoogleTest)

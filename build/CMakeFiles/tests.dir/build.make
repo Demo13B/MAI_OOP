@@ -83,19 +83,35 @@ CMakeFiles/tests.dir/tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/tests.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/timursalihov/OOP_MAI/LW1/tests.cpp -o CMakeFiles/tests.dir/tests.cpp.s
 
+CMakeFiles/tests.dir/crazyChecker.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/crazyChecker.cpp.o: /Users/timursalihov/OOP_MAI/LW1/crazyChecker.cpp
+CMakeFiles/tests.dir/crazyChecker.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/timursalihov/OOP_MAI/LW1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tests.dir/crazyChecker.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/crazyChecker.cpp.o -MF CMakeFiles/tests.dir/crazyChecker.cpp.o.d -o CMakeFiles/tests.dir/crazyChecker.cpp.o -c /Users/timursalihov/OOP_MAI/LW1/crazyChecker.cpp
+
+CMakeFiles/tests.dir/crazyChecker.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/crazyChecker.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/timursalihov/OOP_MAI/LW1/crazyChecker.cpp > CMakeFiles/tests.dir/crazyChecker.cpp.i
+
+CMakeFiles/tests.dir/crazyChecker.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/crazyChecker.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/timursalihov/OOP_MAI/LW1/crazyChecker.cpp -o CMakeFiles/tests.dir/crazyChecker.cpp.s
+
 # Object files for target tests
 tests_OBJECTS = \
-"CMakeFiles/tests.dir/tests.cpp.o"
+"CMakeFiles/tests.dir/tests.cpp.o" \
+"CMakeFiles/tests.dir/crazyChecker.cpp.o"
 
 # External object files for target tests
 tests_EXTERNAL_OBJECTS =
 
 tests: CMakeFiles/tests.dir/tests.cpp.o
+tests: CMakeFiles/tests.dir/crazyChecker.cpp.o
 tests: CMakeFiles/tests.dir/build.make
 tests: lib/libgtest_main.a
 tests: lib/libgtest.a
 tests: CMakeFiles/tests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/timursalihov/OOP_MAI/LW1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/timursalihov/OOP_MAI/LW1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tests.dir/link.txt --verbose=$(VERBOSE)
 	/usr/local/Cellar/cmake/3.27.4/bin/cmake -D TEST_TARGET=tests -D TEST_EXECUTABLE=/Users/timursalihov/OOP_MAI/LW1/build/tests -D TEST_EXECUTOR= -D TEST_WORKING_DIR=/Users/timursalihov/OOP_MAI/LW1/build -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_FILTER= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=tests_TESTS -D CTEST_FILE=/Users/timursalihov/OOP_MAI/LW1/build/tests[1]_tests.cmake -D TEST_DISCOVERY_TIMEOUT=5 -D TEST_XML_OUTPUT_DIR= -P /usr/local/Cellar/cmake/3.27.4/share/cmake/Modules/GoogleTestAddTests.cmake
 

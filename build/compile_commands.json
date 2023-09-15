@@ -6,6 +6,24 @@
   "output": "CMakeFiles/tests.dir/tests.cpp.o"
 },
 {
+  "directory": "/Users/timursalihov/OOP_MAI/LW1/build",
+  "command": "/usr/bin/clang++  -isystem /Users/timursalihov/OOP_MAI/LW1/googletest/googletest/include -isystem /Users/timursalihov/OOP_MAI/LW1/googletest/googletest -g -std=gnu++2a -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -o CMakeFiles/tests.dir/crazyChecker.cpp.o -c /Users/timursalihov/OOP_MAI/LW1/crazyChecker.cpp",
+  "file": "/Users/timursalihov/OOP_MAI/LW1/crazyChecker.cpp",
+  "output": "CMakeFiles/tests.dir/crazyChecker.cpp.o"
+},
+{
+  "directory": "/Users/timursalihov/OOP_MAI/LW1/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++2a -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -o CMakeFiles/main.dir/main.cpp.o -c /Users/timursalihov/OOP_MAI/LW1/main.cpp",
+  "file": "/Users/timursalihov/OOP_MAI/LW1/main.cpp",
+  "output": "CMakeFiles/main.dir/main.cpp.o"
+},
+{
+  "directory": "/Users/timursalihov/OOP_MAI/LW1/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++2a -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -o CMakeFiles/main.dir/crazyChecker.cpp.o -c /Users/timursalihov/OOP_MAI/LW1/crazyChecker.cpp",
+  "file": "/Users/timursalihov/OOP_MAI/LW1/crazyChecker.cpp",
+  "output": "CMakeFiles/main.dir/crazyChecker.cpp.o"
+},
+{
   "directory": "/Users/timursalihov/OOP_MAI/LW1/build/googletest/googlemock",
   "command": "/usr/bin/clang++  -I/Users/timursalihov/OOP_MAI/LW1/googletest/googlemock/include -I/Users/timursalihov/OOP_MAI/LW1/googletest/googlemock -isystem /Users/timursalihov/OOP_MAI/LW1/googletest/googletest/include -isystem /Users/timursalihov/OOP_MAI/LW1/googletest/googletest -g -std=c++2a -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /Users/timursalihov/OOP_MAI/LW1/googletest/googlemock/src/gmock-all.cc",
   "file": "/Users/timursalihov/OOP_MAI/LW1/googletest/googlemock/src/gmock-all.cc",

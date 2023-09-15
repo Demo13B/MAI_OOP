@@ -1,4 +1,5 @@
 /Users/timursalihov/OOP_MAI/LW1/build/CMakeFiles/tests.dir
+/Users/timursalihov/OOP_MAI/LW1/build/CMakeFiles/main.dir
 /Users/timursalihov/OOP_MAI/LW1/build/CMakeFiles/edit_cache.dir
 /Users/timursalihov/OOP_MAI/LW1/build/CMakeFiles/rebuild_cache.dir
 /Users/timursalihov/OOP_MAI/LW1/build/CMakeFiles/list_install_components.dir

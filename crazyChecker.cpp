@@ -9,13 +9,13 @@ auto isAfraid(std::string day, int number) -> bool
         return number > 95;
 
     if (day == "Wednesday")
-        return 34;
+        return number == 34;
 
     if (day == "Thursday")
-        return 0;
+        return number == 0;
 
     if (day == "Friday")
-        return number % 2 + 1;
+        return (number % 2) - 1;
 
     if (day == "Saturday")
         return number == 56;
