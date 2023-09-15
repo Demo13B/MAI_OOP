@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/Users/timursalihov/OOP_MAI/LW1/build",
+  "command": "/usr/bin/clang++  -isystem /Users/timursalihov/OOP_MAI/LW1/googletest/googletest/include -isystem /Users/timursalihov/OOP_MAI/LW1/googletest/googletest -g -std=gnu++2a -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -o CMakeFiles/tests.dir/tests.cpp.o -c /Users/timursalihov/OOP_MAI/LW1/tests.cpp",
+  "file": "/Users/timursalihov/OOP_MAI/LW1/tests.cpp",
+  "output": "CMakeFiles/tests.dir/tests.cpp.o"
+},
+{
+  "directory": "/Users/timursalihov/OOP_MAI/LW1/build/googletest/googlemock",
+  "command": "/usr/bin/clang++  -I/Users/timursalihov/OOP_MAI/LW1/googletest/googlemock/include -I/Users/timursalihov/OOP_MAI/LW1/googletest/googlemock -isystem /Users/timursalihov/OOP_MAI/LW1/googletest/googletest/include -isystem /Users/timursalihov/OOP_MAI/LW1/googletest/googletest -g -std=c++2a -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /Users/timursalihov/OOP_MAI/LW1/googletest/googlemock/src/gmock-all.cc",
+  "file": "/Users/timursalihov/OOP_MAI/LW1/googletest/googlemock/src/gmock-all.cc",
+  "output": "googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o"
+},
+{
+  "directory": "/Users/timursalihov/OOP_MAI/LW1/build/googletest/googlemock",
+  "command": "/usr/bin/clang++  -isystem /Users/timursalihov/OOP_MAI/LW1/googletest/googlemock/include -isystem /Users/timursalihov/OOP_MAI/LW1/googletest/googlemock -isystem /Users/timursalihov/OOP_MAI/LW1/googletest/googletest/include -isystem /Users/timursalihov/OOP_MAI/LW1/googletest/googletest -g -std=c++2a -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /Users/timursalihov/OOP_MAI/LW1/googletest/googlemock/src/gmock_main.cc",
+  "file": "/Users/timursalihov/OOP_MAI/LW1/googletest/googlemock/src/gmock_main.cc",
+  "output": "googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
+},
+{
+  "directory": "/Users/timursalihov/OOP_MAI/LW1/build/googletest/googletest",
+  "command": "/usr/bin/clang++  -I/Users/timursalihov/OOP_MAI/LW1/googletest/googletest/include -I/Users/timursalihov/OOP_MAI/LW1/googletest/googletest -g -std=c++2a -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /Users/timursalihov/OOP_MAI/LW1/googletest/googletest/src/gtest-all.cc",
+  "file": "/Users/timursalihov/OOP_MAI/LW1/googletest/googletest/src/gtest-all.cc",
+  "output": "googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
+},
+{
+  "directory": "/Users/timursalihov/OOP_MAI/LW1/build/googletest/googletest",
+  "command": "/usr/bin/clang++  -isystem /Users/timursalihov/OOP_MAI/LW1/googletest/googletest/include -isystem /Users/timursalihov/OOP_MAI/LW1/googletest/googletest -g -std=c++2a -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /Users/timursalihov/OOP_MAI/LW1/googletest/googletest/src/gtest_main.cc",
+  "file": "/Users/timursalihov/OOP_MAI/LW1/googletest/googletest/src/gtest_main.cc",
+  "output": "googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
+}
+]
