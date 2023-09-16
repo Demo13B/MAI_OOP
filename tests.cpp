@@ -85,3 +85,8 @@ TEST(Sunday, wrong_number)
 {
     ASSERT_FALSE(isAfraid("Sunday", 1));
 }
+
+TEST(Wrong_day, any_number)
+{
+    ASSERT_FALSE(isAfraid("Nday", 34));
+}
