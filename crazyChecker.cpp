@@ -1,7 +1,6 @@
 #include <string>
 
-auto isAfraid(std::string day, int number) -> bool
-{
+auto isAfraid(std::string day, int number) -> bool {
     if (day == "Monday")
         return number == 12;
 

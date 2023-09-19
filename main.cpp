@@ -1,8 +1,7 @@
 #include <iostream>
 #include "crazyChecker.hpp"
 
-auto main() -> int
-{
+auto main() -> int {
     std::string day;
     int number;
 
