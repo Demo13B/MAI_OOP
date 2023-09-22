@@ -9,6 +9,10 @@ TEST(Monday, wrong_number) {
     ASSERT_FALSE(isAfraid("Monday", 10));
 }
 
+TEST(Monday, another_wrong_number) {
+    ASSERT_FALSE(isAfraid("Monday", 11));
+}
+
 TEST(Tuesday, correct_number) {
     ASSERT_TRUE(isAfraid("Tuesday", 144));
 }
