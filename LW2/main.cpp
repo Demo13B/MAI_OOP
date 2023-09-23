@@ -1,6 +1,5 @@
 #include <iostream>
+#include "seven.hpp"
 
 auto main() -> int {
-    std::cout << "Test" << std::endl;
-    return 0;
 }
