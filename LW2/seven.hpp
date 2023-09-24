@@ -1,8 +1,11 @@
 #pragma once
 
+#include <string>
+
 class Seven {
    private:
-    unsigned char value[100];
+    unsigned char* _value;
+    size_t _size;
 
    public:
     Seven();
@@ -13,4 +16,7 @@ class Seven {
     Seven(const Seven& other);
     Seven(Seven&& other) noexcept;
     virtual ~Seven() noexcept;
+
+    auto get_value() -> unsigned char*;
+    auto get_size() -> size_t;
 };
