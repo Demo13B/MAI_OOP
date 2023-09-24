@@ -54,11 +54,3 @@ Seven::~Seven() noexcept {
     _size = 0;
     delete _value;
 }
-
-auto Seven::get_size() -> size_t {
-    return _size;
-}
-
-auto Seven::get_value() -> unsigned char* {
-    return _value;
-}

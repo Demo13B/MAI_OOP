@@ -19,4 +19,8 @@ class Seven {
 
     auto get_value() -> unsigned char*;
     auto get_size() -> size_t;
+
+    auto operator+(const Seven& other) -> Seven;
+
+    auto resize(const size_t& n) -> void;
 };
