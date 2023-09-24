@@ -7,6 +7,8 @@ class Seven {
     unsigned char* _value;
     size_t _size;
 
+    auto resize() -> void;
+
    public:
     Seven();
     Seven(const size_t& n, const unsigned char t = 0);
@@ -19,4 +21,8 @@ class Seven {
 
     auto get_value() -> unsigned char*;
     auto get_size() -> size_t;
+
+    auto operator+(const Seven& other) -> Seven;
+    auto operator-(const Seven& other) -> Seven;
+    auto operator=(const Seven& other) -> Seven&;
 };

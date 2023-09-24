@@ -18,4 +18,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # enable_testing()
 
-add_executable(main main.cpp seven.cpp)
+add_executable(
+    main 
+    main.cpp 
+    seven_constructors.cpp 
+    seven_getters.cpp 
+    seven_arithmetic_operators.cpp 
+    seven_private.cpp
+)
