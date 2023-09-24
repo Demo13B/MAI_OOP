@@ -7,7 +7,12 @@ Seven::Seven() {
     _size = 0;
 }
 
-Seven::Seven(const std::string& t) {
+Seven::Seven(const size_t& n, const unsigned char t) {
+    _size = n;
+    _value = new unsigned char[n]{t};
+}
+
+Seven::Seven(const std::initializer_list<unsigned char>& t) {
     _value = new unsigned char(t.size());
     _size = 0;
 
@@ -20,7 +25,7 @@ Seven::Seven(const std::string& t) {
     }
 }
 
-Seven::Seven(const std::initializer_list<unsigned char>& t) {
+Seven::Seven(const std::string& t) {
     _value = new unsigned char(t.size());
     _size = 0;
 
@@ -39,8 +44,21 @@ Seven::Seven(const Seven& other) {
 }
 
 Seven::Seven(Seven&& other) noexcept {
-    this->_value = other._value;
-    this->_size = other._size;
+    _value = other._value;
+    _size = other._size;
     other._value = nullptr;
     other._size = 0;
+}
+
+Seven::~Seven() noexcept {
+    _size = 0;
+    delete _value;
+}
+
+auto Seven::get_size() -> size_t {
+    return _size;
+}
+
+auto Seven::get_value() -> unsigned char* {
+    return _value;
 }

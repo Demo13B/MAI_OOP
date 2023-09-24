@@ -3,10 +3,9 @@
 
 auto main() -> int {
     try {
-        Seven num = Seven();
-        Seven num2 = Seven(num);
-        std::cout << num.get_value() << std::endl;
-        std::cout << num2.get_value() << std::endl;
+        size_t i = 10;
+        Seven num = Seven(i);
+        std::cout << num.get_size() << std::endl;
     } catch (const std::invalid_argument& ex) {
         std::cout << "Exception caught: " << ex.what() << std::endl;
     }
