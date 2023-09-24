@@ -34,7 +34,7 @@ auto Seven::operator+(const Seven& other) -> Seven {
 
     if (transfer != 0) {
         ++result._size;
-        result.resize();
+        result._resize();
         result._value[maxSize] = transfer + 48;
     }
 
@@ -64,7 +64,7 @@ auto Seven::operator-(const Seven& other) -> Seven {
             --result._value[pos];
             if (pos + 1 == result._size && result._value[pos] == '0') {
                 --result._size;
-                result.resize();
+                result._resize();
             }
         }
     }

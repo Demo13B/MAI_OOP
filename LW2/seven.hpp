@@ -7,7 +7,7 @@ class Seven {
     unsigned char* _value;
     size_t _size;
 
-    auto resize() -> void;
+    auto _resize() -> void;
 
    public:
     Seven();

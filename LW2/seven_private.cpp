@@ -1,6 +1,6 @@
 #include "seven.hpp"
 
-auto Seven::resize() -> void {
+auto Seven::_resize() -> void {
     unsigned char* resized = new unsigned char[_size]{};
 
     for (size_t i = 0; i < _size; ++i) {
