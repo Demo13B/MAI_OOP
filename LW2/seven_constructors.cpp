@@ -1,6 +1,6 @@
-#include "seven.hpp"
 #include <exception>
 #include <string>
+#include "seven.hpp"
 
 Seven::Seven() {
     _value = new unsigned char[100]{};
@@ -39,13 +39,22 @@ Seven::Seven(const std::string& t) {
 }
 
 Seven::Seven(const Seven& other) {
-    _value = other._value;
     _size = other._size;
+    _value = new unsigned char[_size];
+
+    for (size_t i = 0; i != _size; ++i) {
+        _value[i] = other._value[i];
+    }
 }
 
 Seven::Seven(Seven&& other) noexcept {
-    _value = other._value;
     _size = other._size;
+    _value = new unsigned char[_size];
+
+    for (size_t i = 0; i != _size; ++i) {
+        _value[i] = other._value[i];
+    }
+
     other._value = nullptr;
     other._size = 0;
 }

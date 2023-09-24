@@ -23,4 +23,5 @@ class Seven {
     auto get_size() -> size_t;
 
     auto operator+(const Seven& other) -> Seven;
+    auto operator-(const Seven& other) -> Seven;
 };

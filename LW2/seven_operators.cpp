@@ -40,3 +40,34 @@ auto Seven::operator+(const Seven& other) -> Seven {
 
     return result;
 }
+
+auto Seven::operator-(const Seven& other) -> Seven {
+    if (other._size > _size)
+        throw std::invalid_argument("The result of subtraction would be negative");
+
+    Seven result = Seven(*this);
+
+    for (size_t i = other._size - 1; i < other._size; --i) {
+        result._value[i] = _value[i] - other._value[i] + '0';
+
+        if (result._value[i] < '0') {
+            result._value[i] += 7;
+            size_t pos = i + 1;
+            while (pos != result._size && result._value[pos] == '0') {
+                result._value[pos] = '6';
+                pos += 1;
+            }
+
+            if (pos == result._size)
+                throw std::invalid_argument("The result of subtraction would be negative");
+
+            --result._value[pos];
+            if (pos + 1 == result._size && result._value[pos] == '0') {
+                --result._size;
+                result.resize();
+            }
+        }
+    }
+
+    return result;
+}
