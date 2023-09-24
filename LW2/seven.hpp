@@ -24,4 +24,5 @@ class Seven {
 
     auto operator+(const Seven& other) -> Seven;
     auto operator-(const Seven& other) -> Seven;
+    auto operator=(const Seven& other) -> Seven&;
 };

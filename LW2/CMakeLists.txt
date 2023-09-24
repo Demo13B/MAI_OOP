@@ -23,6 +23,6 @@ add_executable(
     main.cpp 
     seven_constructors.cpp 
     seven_getters.cpp 
-    seven_operators.cpp 
+    seven_arithmetic_operators.cpp 
     seven_private.cpp
 )
