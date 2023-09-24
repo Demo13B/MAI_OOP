@@ -1,9 +1,10 @@
 #include "seven.hpp"
 
 auto Seven::operator+(const Seven& other) -> Seven {
+    bool longer = _size >= other._size;
     size_t maxSize, minSize;
 
-    if (_size >= other._size) {
+    if (longer) {
         maxSize = _size;
         minSize = other._size;
     } else {
@@ -24,6 +25,17 @@ auto Seven::operator+(const Seven& other) -> Seven {
     }
 
     for (size_t i = minSize; i < maxSize; ++i) {
+        num1 = longer ? _value[i] - 48 : other._value[i] - 48;
+        sum = num1 + transfer;
+        transfer = sum / 7;
+        remainder = sum % 7;
+        result._value[i] = remainder + 48;
+    }
+
+    if (transfer != 0) {
+        ++result._size;
+        result.resize();
+        result._value[maxSize] = transfer + 48;
     }
 
     return result;

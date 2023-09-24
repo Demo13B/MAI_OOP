@@ -4,9 +4,11 @@
 auto main() -> int {
     try {
         size_t i = 10;
-        Seven num = Seven("125");
-        num.resize(4);
-        std::cout << num.get_value() << std::endl;
+        Seven num = Seven("124");
+        Seven num2 = Seven("123");
+        Seven res = num + num2;
+        std::cout << res.get_value() << std::endl;
+        std::cout << res.get_size() << std::endl;
     } catch (const std::invalid_argument& ex) {
         std::cout << "Exception caught: " << ex.what() << std::endl;
     }
