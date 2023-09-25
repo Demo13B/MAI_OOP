@@ -59,7 +59,7 @@ Seven::Seven(Seven&& other) noexcept {
         _value[i] = other._value[i];
     }
 
-    other._value = nullptr;
+    delete other._value;
     other._size = 0;
 }
 
