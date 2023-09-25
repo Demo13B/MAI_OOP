@@ -24,5 +24,6 @@ add_executable(
     seven_constructors.cpp 
     seven_getters.cpp 
     seven_arithmetic_operators.cpp 
+    seven_comparison_operators.cpp
     seven_private.cpp
 )
