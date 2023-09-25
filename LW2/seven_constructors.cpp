@@ -13,28 +13,28 @@ Seven::Seven(const size_t& n, const unsigned char t) {
 }
 
 Seven::Seven(const std::initializer_list<unsigned char>& t) {
-    _value = new unsigned char(t.size());
-    _size = 0;
+    _size = t.size();
+    _value = new unsigned char(_size);
 
+    size_t pos = 0;
     for (const unsigned char& digit : t) {
         if (digit < 48 || digit > 54)
             throw std::invalid_argument("Digit char is out of range");
 
-        _value[_size] = digit;
-        ++_size;
+        _value[pos++] = digit;
     }
 }
 
 Seven::Seven(const std::string& t) {
-    _value = new unsigned char(t.size());
-    _size = 0;
+    _size = t.size();
+    _value = new unsigned char(_size);
 
+    size_t pos = 0;
     for (const unsigned char& digit : t) {
         if (digit < 48 || digit > 54)
             throw std::invalid_argument("Digit char is out of range");
 
-        _value[_size] = digit;
-        ++_size;
+        _value[pos++] = digit;
     }
 }
 
