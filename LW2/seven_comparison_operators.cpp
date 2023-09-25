@@ -33,3 +33,15 @@ auto Seven::operator<(const Seven& other) -> bool {
 
     return false;
 }
+
+auto Seven::operator==(const Seven& other) -> bool {
+    if (_size != other._size)
+        return false;
+
+    for (size_t i = 0; i < _size; ++i) {
+        if (_value[i] != other._value[i])
+            return false;
+    }
+
+    return true;
+}
