@@ -20,6 +20,7 @@ class Seven {
     virtual ~Seven() noexcept;
 
     auto get_value() -> unsigned char*;
+    auto get_stringified() -> std::string;
     auto get_size() -> size_t;
 
     auto operator+(const Seven& other) -> Seven;

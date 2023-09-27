@@ -3,25 +3,29 @@
 #include "seven.hpp"
 
 Seven::Seven() {
-    _value = new unsigned char[100]{};
+    _value = new unsigned char[0]{};
     _size = 0;
 }
 
 Seven::Seven(const size_t& n, const unsigned char t) {
+    if (t != 0 && (t < 48 || t > 54))
+        throw std::invalid_argument("Digit char is out of range");
+
     _size = n;
-    _value = new unsigned char[n]{t};
+    _value = new unsigned char[n];
+    std::fill(_value, _value + _size, t);
 }
 
 Seven::Seven(const std::initializer_list<unsigned char>& t) {
     _size = t.size();
-    _value = new unsigned char(_size);
+    _value = new unsigned char[_size];
 
-    size_t pos = 0;
+    size_t pos = _size - 1;
     for (const unsigned char& digit : t) {
         if (digit < 48 || digit > 54)
             throw std::invalid_argument("Digit char is out of range");
 
-        _value[pos++] = digit;
+        _value[pos--] = digit;
     }
 }
 
@@ -29,12 +33,12 @@ Seven::Seven(const std::string& t) {
     _size = t.size();
     _value = new unsigned char(_size);
 
-    size_t pos = 0;
+    size_t pos = _size - 1;
     for (const unsigned char& digit : t) {
         if (digit < 48 || digit > 54)
             throw std::invalid_argument("Digit char is out of range");
 
-        _value[pos++] = digit;
+        _value[pos--] = digit;
     }
 }
 
@@ -55,7 +59,7 @@ Seven::Seven(Seven&& other) noexcept {
         _value[i] = other._value[i];
     }
 
-    other._value = nullptr;
+    delete other._value;
     other._size = 0;
 }
 
