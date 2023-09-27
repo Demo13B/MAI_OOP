@@ -8,7 +8,7 @@ Seven::Seven() {
 }
 
 Seven::Seven(const size_t& n, const unsigned char t) {
-    if (t < 48 || t > 54)
+    if (t != 0 && (t < 48 || t > 54))
         throw std::invalid_argument("Digit char is out of range");
 
     _size = n;

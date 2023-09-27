@@ -3,10 +3,10 @@
 
 auto main() -> int {
     try {
-        Seven num = Seven({'1', '2', '0'});
-        Seven num2 = Seven("1020");
-        bool res = num == num2;
-        std::cout << num2.get_value();
+        Seven num = Seven("12");
+        Seven num2 = Seven("12");
+        Seven res = num + num2;
+        std::cout << res.get_value();
     } catch (const std::invalid_argument& ex) {
         std::cout << "Invalid argument exception caught: " << ex.what() << std::endl;
     }
