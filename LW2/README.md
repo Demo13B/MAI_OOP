@@ -172,8 +172,8 @@ Seven::Seven(Seven&& other) noexcept {
 }
 
 Seven::~Seven() noexcept {
+    delete[] _value;
     _size = 0;
-    delete _value;
     _value = nullptr;
 }
 ```
@@ -353,7 +353,7 @@ auto Seven::_resize() -> void {
         resized[i] = _value[i];
     }
 
-    delete _value;
+    delete[] _value;
     _value = resized;
 }
 

@@ -7,6 +7,6 @@ auto Seven::_resize() -> void {
         resized[i] = _value[i];
     }
 
-    delete _value;
+    delete[] _value;
     _value = resized;
 }

@@ -60,7 +60,7 @@ Seven::Seven(Seven&& other) noexcept {
 }
 
 Seven::~Seven() noexcept {
+    delete[] _value;
     _size = 0;
-    delete _value;
     _value = nullptr;
 }
