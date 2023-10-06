@@ -3,7 +3,7 @@
 #include "seven.hpp"
 
 Seven::Seven() {
-    _value = new unsigned char[0]{};
+    _value = nullptr;
     _size = 0;
 }
 
@@ -53,17 +53,14 @@ Seven::Seven(const Seven& other) {
 
 Seven::Seven(Seven&& other) noexcept {
     _size = other._size;
-    _value = new unsigned char[_size];
+    _value = other._value;
 
-    for (size_t i = 0; i != _size; ++i) {
-        _value[i] = other._value[i];
-    }
-
-    delete other._value;
+    other._value = nullptr;
     other._size = 0;
 }
 
 Seven::~Seven() noexcept {
     _size = 0;
     delete _value;
+    _value = nullptr;
 }
