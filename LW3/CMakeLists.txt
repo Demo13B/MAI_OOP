@@ -15,7 +15,11 @@ set(CMAKE_CXX_STANDARD 20)
 
 # enable_testing()
 
-add_executable(main main.cpp)
+add_executable(
+    main 
+    main.cpp
+    pentagon.cpp
+)
 
 # include(GoogleTest)
 # gtest_discover_tests()
