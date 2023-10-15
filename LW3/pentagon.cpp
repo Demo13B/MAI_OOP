@@ -58,3 +58,11 @@ auto Pentagon::operator==(const Pentagon& other) const -> bool {
 
     return true;
 }
+
+auto Pentagon::operator=(const Pentagon& other) -> Pentagon& {
+    _points = other.get_points();
+    _mid_point = other.mid_point();
+    _surface = other.surface();
+
+    return *this;
+}

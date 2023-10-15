@@ -22,9 +22,9 @@ class Pentagon : public Figure {
     friend auto operator>>(std::istream& is, Pentagon& p) -> std::istream&;
 
     auto operator==(const Pentagon& other) const -> bool;
-    auto operator=(const Pentagon& other) const -> Pentagon&;
+    auto operator=(const Pentagon& other) -> Pentagon&;
 
-    explicit operator double() const;
+    // explicit operator double() const override;
 };
 
 inline auto operator<<(std::ostream& os, const Pentagon& p) -> std::ostream& {
