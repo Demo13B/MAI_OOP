@@ -1,16 +1,16 @@
-#include "pentagon.hpp"
+#include "hexagon.hpp"
 #include <cmath>
 #include <exception>
 
-Pentagon::Pentagon() {
-    _points.resize(5);
+Hexagon::Hexagon() {
+    _points.resize(6);
     _mid_point.first = 0;
     _mid_point.second = 0;
     _surface = 0;
 }
 
-Pentagon::Pentagon(std::vector<std::pair<double, double>>& points) {
-    if (points.size() != 5)
+Hexagon::Hexagon(std::vector<std::pair<double, double>>& points) {
+    if (points.size() != 6)
         throw std::invalid_argument("Point count is wrong");
 
     for (std::pair<double, double> point : points) {
@@ -19,39 +19,39 @@ Pentagon::Pentagon(std::vector<std::pair<double, double>>& points) {
         _mid_point.second += point.second;
     }
 
-    _mid_point.first /= 5;
-    _mid_point.second /= 5;
+    _mid_point.first /= 6;
+    _mid_point.second /= 6;
 
     double side = std::sqrt(std::pow(_points[0].first - _points[1].first, 2) + std::pow(_points[0].second - _points[1].second, 2));
-    double perimeter = 5 * side;
-    double apotheme = side / (2 * std::tan(36));
+    double perimeter = 6 * side;
+    double apotheme = side / (2 * std::tan(30));
     _surface = perimeter * apotheme / 2;
 }
 
-Pentagon::~Pentagon() {
+Hexagon::~Hexagon() {
     _surface = 0;
 }
 
-auto Pentagon::get_points() const -> std::vector<std::pair<double, double>> {
+auto Hexagon::get_points() const -> std::vector<std::pair<double, double>> {
     return _points;
 }
 
-auto Pentagon::mid_point() const -> std::pair<double, double> {
+auto Hexagon::mid_point() const -> std::pair<double, double> {
     return _mid_point;
 }
 
-auto Pentagon::surface() const -> double {
+auto Hexagon::surface() const -> double {
     return _surface;
 }
 
-auto Pentagon::operator==(const Pentagon& other) const -> bool {
+auto Hexagon::operator==(const Hexagon& other) const -> bool {
     std::vector<std::pair<double, double>> points = other.get_points();
-    for (size_t i = 0; i != 5; ++i) {
-        for (size_t j = 0; j != 5; ++j) {
+    for (size_t i = 0; i != 6; ++i) {
+        for (size_t j = 0; j != 6; ++j) {
             if (_points[i] == points[j])
                 break;
 
-            if (j == 4)
+            if (j == 5)
                 return false;
         }
     }
@@ -59,7 +59,7 @@ auto Pentagon::operator==(const Pentagon& other) const -> bool {
     return true;
 }
 
-auto Pentagon::operator=(const Pentagon& other) -> Pentagon& {
+auto Hexagon::operator=(const Hexagon& other) -> Hexagon& {
     _points = other.get_points();
     _mid_point = other.mid_point();
     _surface = other.surface();
@@ -67,6 +67,6 @@ auto Pentagon::operator=(const Pentagon& other) -> Pentagon& {
     return *this;
 }
 
-Pentagon::operator double() const {
+Hexagon::operator double() const {
     return surface();
 }
