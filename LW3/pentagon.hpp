@@ -43,22 +43,13 @@ inline auto operator<<(std::ostream& os, const Pentagon& p) -> std::ostream& {
 }
 
 inline auto operator>>(std::istream& is, Pentagon& p) -> std::istream& {
+    std::vector<std::pair<double, double>> v(5);
     double x, y;
-    std::pair<double, double> coordinates;
     for (size_t i = 0; i != 5; ++i) {
-        is >> coordinates.first >> coordinates.second;
-        p._points[i] = coordinates;
-        p._mid_point.first += coordinates.first;
-        p._mid_point.second += coordinates.second;
+        is >> v[i].first >> v[i].second;
     }
 
-    p._mid_point.first /= 5;
-    p._mid_point.second /= 5;
-
-    double side = std::sqrt(std::pow(p._points[0].first - p._points[1].first, 2) + std::pow(p._points[0].second - p._points[1].second, 2));
-    double perimeter = 5 * side;
-    double apotheme = side / (2 * std::tan(36));
-    p._surface = perimeter * apotheme / 2;
+    p = Pentagon(v);
 
     return is;
 }
