@@ -66,3 +66,7 @@ auto Pentagon::operator=(const Pentagon& other) -> Pentagon& {
 
     return *this;
 }
+
+Pentagon::operator double() const {
+    return surface();
+}

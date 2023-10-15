@@ -10,5 +10,5 @@ class Figure {
     virtual auto mid_point() const -> std::pair<double, double> = 0;
     virtual auto surface() const -> double = 0;
 
-    // virtual explicit operator double() const = 0;
+    virtual explicit operator double() const = 0;
 };

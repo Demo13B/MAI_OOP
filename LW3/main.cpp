@@ -8,5 +8,8 @@ auto main() -> int {
     // Pentagon p2 = Pentagon(v2);
     Pentagon p1;
     std::cin >> p1;
-    std::cout << p1;
+    double b = p1.surface();
+    std::cout << b << std::endl;
+    double a = (double)p1;
+    std::cout << a;
 }
