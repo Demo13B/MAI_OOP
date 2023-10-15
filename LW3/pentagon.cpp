@@ -43,3 +43,18 @@ auto Pentagon::mid_point() const -> std::pair<double, double> {
 auto Pentagon::surface() const -> double {
     return _surface;
 }
+
+auto Pentagon::operator==(const Pentagon& other) const -> bool {
+    std::vector<std::pair<double, double>> points = other.get_points();
+    for (size_t i = 0; i != 5; ++i) {
+        for (size_t j = 0; j != 5; ++j) {
+            if (_points[i] == points[j])
+                break;
+
+            if (j == 4)
+                return false;
+        }
+    }
+
+    return true;
+}

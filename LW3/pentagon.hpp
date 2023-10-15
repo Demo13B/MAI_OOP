@@ -21,8 +21,8 @@ class Pentagon : public Figure {
     friend auto operator<<(std::ostream& os, const Pentagon& p) -> std::ostream&;
     friend auto operator>>(std::istream& is, Pentagon& p) -> std::istream&;
 
-    auto operator==(const Figure& other) const -> bool;
-    auto operator=(const Figure& other) const -> Figure&;
+    auto operator==(const Pentagon& other) const -> bool;
+    auto operator=(const Pentagon& other) const -> Pentagon&;
 
     explicit operator double() const;
 };
