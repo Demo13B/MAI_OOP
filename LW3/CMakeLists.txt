@@ -19,6 +19,8 @@ add_executable(
     main 
     main.cpp
     pentagon.cpp
+    hexagon.cpp
+    octagon.cpp
 )
 
 # include(GoogleTest)
