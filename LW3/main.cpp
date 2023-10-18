@@ -57,9 +57,41 @@ auto main() -> int {
 
     std::cout << "Total surface: " << total_surface << std::endl;
 
-    size_t index;
-    std::cout << "What figure do you want to delete (index)?: ";
-    std::cin >> index;
-    delete figures[index];
-    figures[index] = nullptr;
+    size_t to_delete;
+    std::cout << "How many figures do you want to delete?: ";
+    std::cin >> to_delete;
+
+    if (to_delete > count) {
+        std::cerr << "You want to delete more elements than threre are";
+        return 1;
+    }
+
+    for (size_t i = 0; i != to_delete; ++i) {
+        size_t index;
+        std::cout << "What figure do you want to delete (index)?: ";
+        std::cin >> index;
+
+        if (index > count) {
+            std::cout << "No such figure" << std::endl;
+            return 1;
+        }
+
+        delete figures[index];
+        figures[index] = nullptr;
+    }
+
+    Pentagon p;
+    Hexagon h;
+    Octagon o;
+    for (size_t i = 0; i != count; ++i) {
+        if (figures[i] == nullptr) {
+            std::cout << "The figure has been deleted" << std::endl;
+        } else if (typeid(p) == typeid(*figures[i])) {
+            std::cout << *(Pentagon*)figures[i];
+        } else if (typeid(h) == typeid(*figures[i])) {
+            std::cout << *(Hexagon*)figures[i];
+        } else if (typeid(o) == typeid(*figures[i])) {
+            std::cout << *(Octagon*)figures[i];
+        }
+    }
 }
