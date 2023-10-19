@@ -24,7 +24,7 @@
 ## Программы
 
 ### main.cpp
-```
+```cpp
 #include <iostream>
 #include "hexagon.hpp"
 #include "octagon.hpp"
@@ -125,7 +125,7 @@ auto main() -> int {
 ```
 
 ### figure.hpp
-```
+```cpp
 #pragma once
 #include <iostream>
 #include <utility>
@@ -143,7 +143,7 @@ class Figure {
 ```
 
 ### pentagon.hpp
-```
+```cpp
 #pragma once
 #include <cmath>
 #include <vector>
@@ -203,7 +203,7 @@ inline auto operator>>(std::istream& is, Pentagon& p) -> std::istream& {
 ```
 
 ### pentagon.cpp
-```
+```cpp
 #include "pentagon.hpp"
 #include <cmath>
 #include <exception>
@@ -287,7 +287,7 @@ Pentagon::operator double() const {
 ```
 
 ### hexagon.hpp
-```
+```cpp
 #pragma once
 #include <cmath>
 #include <vector>
@@ -347,7 +347,7 @@ inline auto operator>>(std::istream& is, Hexagon& p) -> std::istream& {
 ```
 
 ### hexagon.cpp
-```
+```cpp
 #include "hexagon.hpp"
 #include <cmath>
 #include <exception>
@@ -431,7 +431,7 @@ Hexagon::operator double() const {
 ```
 
 ### octagon.hpp
-```
+```cpp
 #pragma once
 #include <cmath>
 #include <vector>
@@ -491,7 +491,7 @@ inline auto operator>>(std::istream& is, Octagon& p) -> std::istream& {
 ```
 
 ### octagon.cpp
-```
+```cpp
 #include "octagon.hpp"
 #include <cmath>
 #include <exception>
@@ -575,7 +575,7 @@ Octagon::operator double() const {
 ```
 
 ### tests.cpp
-```
+```cpp
 #include <gtest/gtest.h>
 #include "hexagon.hpp"
 #include "octagon.hpp"
@@ -736,7 +736,7 @@ TEST(Octagon, double_cast) {
 ```
 
 ### CMakeLists.txt
-```
+```cmake
 cmake_minimum_required(VERSION 3.10)
 project(Inherited_classes)
 
