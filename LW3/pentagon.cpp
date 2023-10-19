@@ -67,6 +67,14 @@ auto Pentagon::operator=(const Pentagon& other) -> Pentagon& {
     return *this;
 }
 
+auto Pentagon::operator=(Pentagon&& other) -> Pentagon& {
+    _points = std::move(other._points);
+    _mid_point = std::move(other._mid_point);
+    _surface = std::move(other._surface);
+
+    return *this;
+}
+
 Pentagon::operator double() const {
     return surface();
 }

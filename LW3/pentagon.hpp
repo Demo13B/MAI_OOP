@@ -23,6 +23,7 @@ class Pentagon : public Figure {
 
     auto operator==(const Pentagon& other) const -> bool;
     auto operator=(const Pentagon& other) -> Pentagon&;
+    auto operator=(Pentagon&& other) -> Pentagon&;
 
     explicit operator double() const override;
 };
