@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-#include <iostream>
 #include "hexagon.hpp"
 #include "octagon.hpp"
 #include "pentagon.hpp"
