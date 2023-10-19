@@ -34,9 +34,18 @@ TEST(Pentagon, copy) {
     Pentagon p3(v2);
     p1 = p2;
     EXPECT_EQ(p1, p2);
-    Pentagon p4 = p1;
+    Pentagon p4;
+    p4 = p1;
     p2 = p3;
     EXPECT_EQ(p1, p4);
+}
+
+TEST(Pentagon, assignment) {
+    Pentagon p;
+    p = Pentagon(v1);
+    std::pair<double, double> center{3, 3};
+    EXPECT_EQ(p.get_points(), v1);
+    EXPECT_EQ(p.mid_point(), center);
 }
 
 TEST(Pentagon, double_cast) {
@@ -76,9 +85,18 @@ TEST(Hexagon, copy) {
     Hexagon h3(v4);
     h1 = h2;
     EXPECT_EQ(h1, h2);
-    Hexagon h4 = h1;
+    Hexagon h4;
+    h4 = h1;
     h2 = h3;
     EXPECT_EQ(h1, h4);
+}
+
+TEST(Hexagon, assignment) {
+    Hexagon h;
+    h = Hexagon(v3);
+    std::pair<double, double> center{3.5, 3.5};
+    EXPECT_EQ(h.get_points(), v3);
+    EXPECT_EQ(h.mid_point(), center);
 }
 
 TEST(Hexagon, double_cast) {
@@ -118,9 +136,18 @@ TEST(Octagon, copy) {
     Octagon o3(v6);
     o1 = o2;
     EXPECT_EQ(o1, o2);
-    Octagon o4 = o1;
+    Octagon o4;
+    o4 = o1;
     o2 = o3;
     EXPECT_EQ(o1, o4);
+}
+
+TEST(Octagon, assignment) {
+    Octagon o;
+    o = Octagon(v5);
+    std::pair<double, double> center{4.5, 4.5};
+    EXPECT_EQ(o.get_points(), v5);
+    EXPECT_EQ(o.mid_point(), center);
 }
 
 TEST(Octagon, double_cast) {

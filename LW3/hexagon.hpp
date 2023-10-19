@@ -23,6 +23,7 @@ class Hexagon : public Figure {
 
     auto operator==(const Hexagon& other) const -> bool;
     auto operator=(const Hexagon& other) -> Hexagon&;
+    auto operator=(Hexagon&& other) -> Hexagon&;
 
     explicit operator double() const override;
 };

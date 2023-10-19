@@ -23,6 +23,7 @@ class Octagon : public Figure {
 
     auto operator==(const Octagon& other) const -> bool;
     auto operator=(const Octagon& other) -> Octagon&;
+    auto operator=(Octagon&& other) -> Octagon&;
 
     explicit operator double() const override;
 };

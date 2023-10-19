@@ -67,6 +67,14 @@ auto Hexagon::operator=(const Hexagon& other) -> Hexagon& {
     return *this;
 }
 
+auto Hexagon::operator=(Hexagon&& other) -> Hexagon& {
+    _points = std::move(other._points);
+    _mid_point = std::move(other._mid_point);
+    _surface = std::move(other._surface);
+
+    return *this;
+}
+
 Hexagon::operator double() const {
     return surface();
 }
