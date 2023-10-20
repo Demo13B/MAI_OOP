@@ -21,6 +21,7 @@ add_executable(
     pentagon.cpp
     hexagon.cpp
     octagon.cpp
+    array.cpp
 )
 
 add_executable(
@@ -29,6 +30,7 @@ add_executable(
     pentagon.cpp
     hexagon.cpp
     octagon.cpp
+    array.cpp
 )
 
 target_link_libraries(tests GTest::gtest_main)

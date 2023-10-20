@@ -1,4 +1,5 @@
 #include <iostream>
+#include "array.hpp"
 #include "hexagon.hpp"
 #include "octagon.hpp"
 #include "pentagon.hpp"
@@ -8,7 +9,7 @@ auto main() -> int {
     std::cout << "How many figures do you want to create?: ";
     std::cin >> count;
 
-    Figure** figures = new Figure*[count];
+    Array f = Array(count);
 
     for (size_t i = 0; i != count; ++i) {
         char option;
@@ -24,38 +25,35 @@ auto main() -> int {
                 p = new Pentagon;
                 std::cout << "Please, enter the pentagon point coordinates: " << std::endl;
                 std::cin >> *p;
-                figures[i] = p;
+                f.update_figure(i, p);
                 break;
 
             case 'h':
                 h = new Hexagon;
                 std::cout << "Please, enter the hexagon point coordinates: " << std::endl;
                 std::cin >> *h;
-                figures[i] = h;
+                f.update_figure(i, h);
                 break;
 
             case 'o':
                 o = new Octagon;
                 std::cout << "Please, enter the octagon point coordinates: " << std::endl;
                 std::cin >> *o;
-                figures[i] = o;
+                f.update_figure(i, o);
                 break;
         }
     }
 
-    double total_surface = 0.0;
-
     for (size_t i = 0; i != count; ++i) {
-        std::pair<double, double> center = figures[i]->mid_point();
-        double surface = figures[i]->surface();
-        total_surface += surface;
+        std::pair<double, double> center = f[i]->mid_point();
+        double surface = f[i]->surface();
 
         std::cout
             << "Figure " << i + 1 << ": Mid point = (" << center.first << ", " << center.second
             << "); Surface = " << surface << std::endl;
     }
 
-    std::cout << "Total surface: " << total_surface << std::endl;
+    std::cout << "Total surface: " << f.common_surface() << std::endl;
 
     size_t to_delete;
     std::cout << "How many figures do you want to delete?: ";
@@ -66,32 +64,27 @@ auto main() -> int {
         return 1;
     }
 
+    size_t index;
     for (size_t i = 0; i != to_delete; ++i) {
-        size_t index;
         std::cout << "What figure do you want to delete (index)?: ";
         std::cin >> index;
 
-        if (index > count) {
-            std::cout << "No such figure" << std::endl;
-            return 1;
-        }
-
-        delete figures[index];
-        figures[index] = nullptr;
+        f.delete_figure(i);
     }
 
     Pentagon p;
     Hexagon h;
     Octagon o;
     for (size_t i = 0; i != count; ++i) {
-        if (figures[i] == nullptr) {
+        const Figure* fig = f[i];
+        if (f[i] == nullptr) {
             std::cout << "The figure has been deleted" << std::endl;
-        } else if (typeid(p) == typeid(*figures[i])) {
-            std::cout << *(Pentagon*)figures[i];
-        } else if (typeid(h) == typeid(*figures[i])) {
-            std::cout << *(Hexagon*)figures[i];
-        } else if (typeid(o) == typeid(*figures[i])) {
-            std::cout << *(Octagon*)figures[i];
+        } else if (typeid(p) == typeid(*fig)) {
+            std::cout << *(Pentagon*)f[i];
+        } else if (typeid(h) == typeid(*fig)) {
+            std::cout << *(Hexagon*)f[i];
+        } else if (typeid(o) == typeid(*fig)) {
+            std::cout << *(Octagon*)f[i];
         }
     }
 }

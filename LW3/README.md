@@ -574,9 +574,92 @@ Octagon::operator double() const {
 }
 ```
 
+### array.hpp
+```cpp
+#include "figure.hpp"
+
+class Array {
+   private:
+    Figure** _figures;
+    size_t _size;
+
+   public:
+    Array();
+    Array(size_t size);
+    virtual ~Array();
+
+    auto operator[](size_t index) const -> Figure*;
+
+    auto delete_figure(size_t index) -> void;
+    auto update_figure(size_t index, Figure* f) -> void;
+    auto common_surface() -> double;
+};
+```
+
+### array.cpp
+```cpp
+#include "array.hpp"
+
+Array::Array() {
+    _size = 100;
+    _figures = new Figure*[_size];
+
+    for (size_t i = 0; i != _size; ++i)
+        _figures[i] = nullptr;
+}
+
+Array::Array(size_t size) {
+    _size = size;
+    _figures = new Figure*[_size];
+
+    for (size_t i = 0; i != _size; ++i)
+        _figures[i] = nullptr;
+}
+
+Array::~Array() {
+    _size = 0;
+    delete[] _figures;
+    _figures = nullptr;
+}
+
+auto Array::operator[](size_t index) const -> Figure* {
+    if (index >= _size)
+        throw std::invalid_argument("The array index is out of range");
+
+    return _figures[index];
+}
+
+auto Array::delete_figure(size_t index) -> void {
+    if (index >= _size)
+        throw std::invalid_argument("The array index is out of range");
+
+    delete _figures[index];
+    _figures[index] = nullptr;
+}
+
+auto Array::update_figure(size_t index, Figure* f) -> void {
+    if (index >= _size)
+        throw std::invalid_argument("The array index is out of range");
+
+    delete _figures[index];
+    _figures[index] = f;
+}
+
+auto Array::common_surface() -> double {
+    double res = 0.0;
+    for (size_t i = 0; i != _size; ++i) {
+        if (_figures[i] != nullptr)
+            res += (double)*_figures[i];
+    }
+
+    return res;
+}
+```
+
 ### tests.cpp
 ```cpp
 #include <gtest/gtest.h>
+#include "array.hpp"
 #include "hexagon.hpp"
 #include "octagon.hpp"
 #include "pentagon.hpp"
@@ -732,6 +815,47 @@ TEST(Octagon, double_cast) {
     Octagon o(v5);
     double a = (double)o;
     EXPECT_EQ(a, o.surface());
+}
+
+TEST(Array, basic_constructor) {
+    Array a;
+
+    for (size_t i = 0; i != 100; ++i)
+        EXPECT_EQ(a[i], nullptr);
+}
+
+TEST(Array, size_conrtuctor) {
+    Array a(10);
+
+    for (size_t i = 0; i != 10; ++i)
+        EXPECT_EQ(a[i], nullptr);
+}
+
+TEST(Array, update_element) {
+    Array a(10);
+    Pentagon p;
+    a.update_figure(1, &p);
+    EXPECT_EQ(a[1], &p);
+    EXPECT_EQ(a[2], nullptr);
+    EXPECT_EQ(a[0], nullptr);
+}
+
+TEST(Array, delete_element) {
+    Array a(10);
+    Pentagon* p = new Pentagon();
+    a.update_figure(1, p);
+    EXPECT_EQ(a[1], p);
+    a.delete_figure(1);
+    EXPECT_EQ(a[1], nullptr);
+}
+
+TEST(Array, common_surface) {
+    Array a(2);
+    Pentagon* p1 = new Pentagon();
+    Pentagon* p2 = new Pentagon();
+    a.update_figure(0, p1);
+    a.update_figure(1, p2);
+    EXPECT_EQ(a.common_surface(), 0.0);
 }
 ```
 
