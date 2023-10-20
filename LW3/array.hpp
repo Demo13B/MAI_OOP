@@ -10,7 +10,8 @@ class Array {
     Array(size_t size);
     virtual ~Array();
 
-    auto operator[](size_t index) const -> Figure*;
+    auto operator[](size_t index) -> Figure*&;
+
     auto delete_figure(size_t index) -> void;
     auto common_surface() -> double;
 };
