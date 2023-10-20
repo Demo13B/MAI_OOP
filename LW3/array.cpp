@@ -17,9 +17,12 @@ Array::Array(size_t size) {
 }
 
 Array::~Array() {
-    _size = 0;
+    for (size_t i = 0; i != _size; ++i) {
+        delete _figures[i];
+    }
     delete[] _figures;
     _figures = nullptr;
+    _size = 0;
 }
 
 auto Array::operator[](size_t index) const -> Figure* {
