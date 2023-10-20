@@ -38,7 +38,7 @@ auto Array::delete_figure(size_t index) -> void {
 }
 
 auto Array::common_surface() -> double {
-    double res = 0;
+    double res = 0.0;
     for (size_t i = 0; i != _size; ++i) {
         if (_figures[i] != nullptr)
             res += (double)*_figures[i];
