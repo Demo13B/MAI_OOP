@@ -69,11 +69,6 @@ auto main() -> int {
         std::cout << "What figure do you want to delete (index)?: ";
         std::cin >> index;
 
-        if (index > count) {
-            std::cout << "No such figure" << std::endl;
-            return 1;
-        }
-
         f.delete_figure(i);
     }
 
