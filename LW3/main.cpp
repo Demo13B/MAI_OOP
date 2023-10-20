@@ -25,21 +25,21 @@ auto main() -> int {
                 p = new Pentagon;
                 std::cout << "Please, enter the pentagon point coordinates: " << std::endl;
                 std::cin >> *p;
-                f[i] = p;
+                f.update_figure(i, p);
                 break;
 
             case 'h':
                 h = new Hexagon;
                 std::cout << "Please, enter the hexagon point coordinates: " << std::endl;
                 std::cin >> *h;
-                f[i] = h;
+                f.update_figure(i, h);
                 break;
 
             case 'o':
                 o = new Octagon;
                 std::cout << "Please, enter the octagon point coordinates: " << std::endl;
                 std::cin >> *o;
-                f[i] = o;
+                f.update_figure(i, o);
                 break;
         }
     }
@@ -81,13 +81,14 @@ auto main() -> int {
     Hexagon h;
     Octagon o;
     for (size_t i = 0; i != count; ++i) {
+        const Figure* fig = f[i];
         if (f[i] == nullptr) {
             std::cout << "The figure has been deleted" << std::endl;
-        } else if (typeid(p) == typeid(*f[i])) {
+        } else if (typeid(p) == typeid(*fig)) {
             std::cout << *(Pentagon*)f[i];
-        } else if (typeid(h) == typeid(*f[i])) {
+        } else if (typeid(h) == typeid(*fig)) {
             std::cout << *(Hexagon*)f[i];
-        } else if (typeid(o) == typeid(*f[i])) {
+        } else if (typeid(o) == typeid(*fig)) {
             std::cout << *(Octagon*)f[i];
         }
     }
