@@ -18,7 +18,8 @@ Array::Array(size_t size) {
 
 Array::~Array() {
     for (size_t i = 0; i != _size; ++i) {
-        delete _figures[i];
+        if (_figures[i] != nullptr)
+            delete _figures[i];
     }
     delete[] _figures;
     _figures = nullptr;
@@ -44,7 +45,8 @@ auto Array::update_figure(size_t index, Figure* f) -> void {
     if (index >= _size)
         throw std::invalid_argument("The array index is out of range");
 
-    delete _figures[index];
+    if (_figures[index] != nullptr)
+        delete _figures[index];
     _figures[index] = f;
 }
 

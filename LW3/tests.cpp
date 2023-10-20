@@ -173,9 +173,9 @@ TEST(Array, size_conrtuctor) {
 
 TEST(Array, update_element) {
     Array a(10);
-    Pentagon p;
-    a.update_figure(1, &p);
-    EXPECT_EQ(a[1], &p);
+    Pentagon* p = new Pentagon();
+    a.update_figure(1, p);
+    EXPECT_EQ(a[1], p);
     EXPECT_EQ(a[2], nullptr);
     EXPECT_EQ(a[0], nullptr);
 }
