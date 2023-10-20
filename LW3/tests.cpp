@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include "array.hpp"
 #include "hexagon.hpp"
 #include "octagon.hpp"
 #include "pentagon.hpp"
@@ -154,4 +155,45 @@ TEST(Octagon, double_cast) {
     Octagon o(v5);
     double a = (double)o;
     EXPECT_EQ(a, o.surface());
+}
+
+TEST(Array, basic_constructor) {
+    Array a;
+
+    for (size_t i = 0; i != 100; ++i)
+        EXPECT_EQ(a[i], nullptr);
+}
+
+TEST(Array, size_conrtuctor) {
+    Array a(10);
+
+    for (size_t i = 0; i != 10; ++i)
+        EXPECT_EQ(a[i], nullptr);
+}
+
+TEST(Array, update_element) {
+    Array a(10);
+    Pentagon p;
+    a.update_figure(1, &p);
+    EXPECT_EQ(a[1], &p);
+    EXPECT_EQ(a[2], nullptr);
+    EXPECT_EQ(a[0], nullptr);
+}
+
+TEST(Array, delete_element) {
+    Array a(10);
+    Pentagon* p = new Pentagon();
+    a.update_figure(1, p);
+    EXPECT_EQ(a[1], p);
+    a.delete_figure(1);
+    EXPECT_EQ(a[1], nullptr);
+}
+
+TEST(Array, common_surface) {
+    Array a(2);
+    Pentagon* p1 = new Pentagon();
+    Pentagon* p2 = new Pentagon();
+    a.update_figure(0, p1);
+    a.update_figure(1, p2);
+    EXPECT_EQ(a.common_surface(), 0.0);
 }
