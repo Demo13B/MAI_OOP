@@ -73,6 +73,11 @@ auto Seven::operator-(const Seven& other) -> Seven {
 }
 
 auto Seven::operator=(const Seven& other) -> Seven& {
+    if (this == &other)
+        return *this;
+
+    delete[] _value;
+
     _size = other._size;
     _value = new unsigned char[_size];
 
