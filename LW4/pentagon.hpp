@@ -7,13 +7,13 @@ template <typename T>
 class Pentagon : public Figure {
    public:
     size_t size;
-    std::vector<std::pair<T, T> > points;
+    std::vector<std::pair<T, T>> points;
 
     Pentagon()
         : size(5),
           points({{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}}) {}
 
-    Pentagon(std::vector<std::pair<T, T> >& v)
+    Pentagon(std::vector<std::pair<T, T>>& v)
         : size(5),
           points(v) {}
 
@@ -30,4 +30,13 @@ inline auto operator<<(std::ostream& os, const Pentagon<T>& pent) -> std::ostrea
     }
 
     return os;
+}
+
+template <typename T>
+inline auto operator>>(std::istream& is, Pentagon<T>& fig) -> std::istream& {
+    for (size_t i = 0; i != fig.size; ++i) {
+        is >> fig.points[i].first >> fig.points[i].second;
+    }
+
+    return is;
 }
