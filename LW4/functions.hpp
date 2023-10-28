@@ -1,6 +1,5 @@
 #include <cmath>
 #include <utility>
-#include "classes.hpp"
 
 template <class C, typename T>
 auto getMidPoint(C& figure) -> std::pair<T, T> {

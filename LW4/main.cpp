@@ -1,6 +1,7 @@
 #include <iostream>
-#include "classes.hpp"
+#include "figure.hpp"
 #include "functions.hpp"
+#include "octagon.hpp"
 
 int main() {
     std::vector<std::pair<double, double> > v = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}};
