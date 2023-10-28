@@ -1,15 +1,25 @@
 #include <iostream>
-#include "classes.hpp"
+#include "figure.hpp"
 #include "functions.hpp"
+#include "hexagon.hpp"
+#include "octagon.hpp"
+#include "pentagon.hpp"
 
 int main() {
-    std::vector<std::pair<double, double> > v = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}};
-    Octagon<double> o = Octagon<double>(v);
-    std::cout << o.points[3].first << ' ' << o.points[3].second << std::endl;
+    std::vector<std::pair<double, double>> v1 = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}};
+    std::vector<std::pair<double, double>> v2 = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}};
+    std::vector<std::pair<double, double>> v3 = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}};
+    Octagon<int> o;   //= Octagon<double>(v1);
+    Pentagon<int> p;  //= Pentagon<double>(v2);
+    Hexagon<int> h;   //= Hexagon<double>(v3);
 
-    std::pair<double, double> p = getMidPoint<Octagon<double>, double>(o);
-    std::cout << p.first << " " << p.second << std::endl;
-    std::cout << surface<Octagon<double>, double>(o) << std::endl;
+    std::cin >> o;
+    std::cin >> p;
+    std::cin >> h;
+
+    std::cout << o << std::endl;
+    std::cout << p << std::endl;
+    std::cout << h << std::endl;
 
     // std::vector<std::pair<int, int> > v = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}};
     // Octagon<int> o = Octagon<int>(v);
