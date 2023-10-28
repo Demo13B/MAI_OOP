@@ -5,6 +5,7 @@
 
 template <typename T>
 class Pentagon : public Figure {
+   public:
     size_t size;
     std::vector<std::pair<T, T> > points;
 
@@ -20,3 +21,13 @@ class Pentagon : public Figure {
         size = 0;
     }
 };
+
+template <typename T>
+inline auto operator<<(std::ostream& os, const Pentagon<T>& pent) -> std::ostream& {
+    for (size_t i = 0; i != pent.size; ++i) {
+        os << 'x' << i << " = " << pent.points[i].first << ", "
+           << 'y' << i << " = " << pent.points[i].second << "; ";
+    }
+
+    return os;
+}

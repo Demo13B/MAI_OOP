@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <utility>
 #include <vector>
 #include "figure.hpp"
@@ -21,3 +22,13 @@ class Octagon : public Figure {
         size = 0;
     }
 };
+
+template <typename T>
+inline auto operator<<(std::ostream& os, const Octagon<T>& oct) -> std::ostream& {
+    for (size_t i = 0; i != oct.size; ++i) {
+        os << 'x' << i << " = " << oct.points[i].first << ", "
+           << 'y' << i << " = " << oct.points[i].second << "; ";
+    }
+
+    return os;
+}
