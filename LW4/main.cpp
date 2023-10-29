@@ -25,6 +25,8 @@ int main() {
     p2 = Pentagon<double>(v1);
 
     std::cout << (double)p << std::endl;
+    std::cout << (double)h << std::endl;
+    std::cout << (double)o << std::endl;
 
     std::cout << o << std::endl;
     std::cout << p << std::endl;

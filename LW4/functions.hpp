@@ -23,8 +23,8 @@ template <class C, typename T>
 auto surface(const C& figure) -> T {
     T side = std::sqrt(std::pow(figure.points[0].first - figure.points[1].first, 2) + std::pow(figure.points[0].second - figure.points[1].second, 2));
     T perimeter = 5 * side;
-    T deriv = 2 * std::tan((double)180 / figure.size);
-    T apotheme = side / (2 * std::tan(22.5));
+    double angle = 180 / figure.size * 57.3;
+    T apotheme = side / (2 * std::tan(angle));
     return perimeter * apotheme / 2;
 }
 
