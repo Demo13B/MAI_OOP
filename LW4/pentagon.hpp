@@ -20,6 +20,9 @@ class Pentagon : public Figure {
     ~Pentagon() {
         size = 0;
     }
+
+    auto operator=(const Pentagon<T>& other) -> Pentagon<T>&;
+    auto operator=(Pentagon<T>&& other) -> Pentagon<T>&;
 };
 
 template <typename T>
@@ -39,4 +42,19 @@ inline auto operator>>(std::istream& is, Pentagon<T>& fig) -> std::istream& {
     }
 
     return is;
+}
+
+template <typename T>
+inline auto operator==(const Pentagon<T>& left, const Pentagon<T>& right) -> bool {
+    for (size_t i = 0; i != 5; ++i) {
+        for (size_t j = 0; j != 5; ++j) {
+            if (left.points[i] == right.points[j])
+                break;
+
+            if (j == 4)
+                return false;
+        }
+    }
+
+    return true;
 }

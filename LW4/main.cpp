@@ -9,15 +9,17 @@ int main() {
     std::vector<std::pair<double, double>> v1 = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}};
     std::vector<std::pair<double, double>> v2 = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}};
     std::vector<std::pair<double, double>> v3 = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}};
-    Octagon<double> o;   //= Octagon<double>(v1);
-    Pentagon<double> p;  //= Pentagon<double>(v2);
-    Hexagon<double> h;   //= Hexagon<double>(v3);
+    Octagon<double> o = Octagon<double>(v1);
+    Pentagon<double> p = Pentagon<double>(v2);
+    Hexagon<double> h = Hexagon<double>(v3);
 
-    std::cin >> o;
-    std::cin >> p;
-    std::cin >> h;
+    Pentagon<double> p2 = Pentagon<double>(v2);
 
-    std::cout << fig::surface<Octagon<double>, double>(o) << std::endl;
+    if (p == p2) {
+        std::cout << "true" << std::endl;
+    } else {
+        std::cout << "false" << std::endl;
+    }
 
     std::cout << o << std::endl;
     std::cout << p << std::endl;
