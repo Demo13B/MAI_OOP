@@ -58,3 +58,19 @@ inline auto operator==(const Pentagon<T>& left, const Pentagon<T>& right) -> boo
 
     return true;
 }
+
+template <typename T>
+inline auto Pentagon<T>::operator=(const Pentagon<T>& other) -> Pentagon<T>& {
+    size = other.size;
+    points = other.points;
+
+    return *this;
+}
+
+template <typename T>
+inline auto Pentagon<T>::operator=(Pentagon<T>&& other) -> Pentagon<T>& {
+    size = other.size;
+    points = std::move(other.points);
+
+    return *this;
+}
