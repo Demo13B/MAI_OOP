@@ -1,3 +1,4 @@
+#pragma once
 #include <cmath>
 #include <utility>
 
@@ -19,7 +20,7 @@ auto getMidPoint(C& figure) -> std::pair<T, T> {
 }
 
 template <class C, typename T>
-auto surface(C& figure) -> T {
+auto surface(const C& figure) -> T {
     T side = std::sqrt(std::pow(figure.points[0].first - figure.points[1].first, 2) + std::pow(figure.points[0].second - figure.points[1].second, 2));
     T perimeter = 5 * side;
     T deriv = 2 * std::tan((double)180 / figure.size);

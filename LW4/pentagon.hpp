@@ -2,6 +2,7 @@
 #include <utility>
 #include <vector>
 #include "figure.hpp"
+#include "functions.hpp"
 
 template <typename T>
 class Pentagon : public Figure {
@@ -23,6 +24,8 @@ class Pentagon : public Figure {
 
     auto operator=(const Pentagon<T>& other) -> Pentagon<T>&;
     auto operator=(Pentagon<T>&& other) -> Pentagon<T>&;
+
+    operator double() const;
 };
 
 template <typename T>
@@ -73,4 +76,9 @@ inline auto Pentagon<T>::operator=(Pentagon<T>&& other) -> Pentagon<T>& {
     points = std::move(other.points);
 
     return *this;
+}
+
+template <typename T>
+inline Pentagon<T>::operator double() const {
+    return (double)fig::surface<Pentagon<T>, T>(*this);
 }
