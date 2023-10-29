@@ -9,13 +9,15 @@ int main() {
     std::vector<std::pair<double, double>> v1 = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}};
     std::vector<std::pair<double, double>> v2 = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}};
     std::vector<std::pair<double, double>> v3 = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}};
-    Octagon<int> o;   //= Octagon<double>(v1);
-    Pentagon<int> p;  //= Pentagon<double>(v2);
-    Hexagon<int> h;   //= Hexagon<double>(v3);
+    Octagon<double> o;   //= Octagon<double>(v1);
+    Pentagon<double> p;  //= Pentagon<double>(v2);
+    Hexagon<double> h;   //= Hexagon<double>(v3);
 
     std::cin >> o;
     std::cin >> p;
     std::cin >> h;
+
+    std::cout << fig::surface<Octagon<double>, double>(o) << std::endl;
 
     std::cout << o << std::endl;
     std::cout << p << std::endl;

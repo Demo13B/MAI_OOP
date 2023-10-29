@@ -1,6 +1,8 @@
 #include <cmath>
 #include <utility>
 
+namespace fig {
+
 template <class C, typename T>
 auto getMidPoint(C& figure) -> std::pair<T, T> {
     size_t size = figure.size;
@@ -23,4 +25,6 @@ auto surface(C& figure) -> T {
     T deriv = 2 * std::tan((double)180 / figure.size);
     T apotheme = side / (2 * std::tan(22.5));
     return perimeter * apotheme / 2;
+}
+
 }
