@@ -12,7 +12,7 @@ class Array {
    public:
     Array();
     Array(size_t size);
-    ~Array() = default;
+    ~Array();
 
     auto operator[](size_t index) -> T*;
 
@@ -40,6 +40,16 @@ inline Array<T>::Array(size_t size) {
 }
 
 template <class T>
+inline Array<T>::~Array() {
+    for (size_t i = 0; i != _size; ++i) {
+        if (_arr.get()[i] != nullptr)
+            delete _arr.get()[i];
+    }
+    _arr = nullptr;
+    _size = 0;
+}
+
+template <class T>
 inline auto Array<T>::operator[](size_t index) -> T* {
     if (index >= _size)
         throw std::invalid_argument("The array index is out of range");
@@ -52,6 +62,7 @@ inline auto Array<T>::delete_figure(size_t index) -> void {
     if (index >= _size)
         throw std::invalid_argument("The array index is out of range");
 
+    delete _arr.get()[index];
     _arr.get()[index] = nullptr;
 }
 
