@@ -21,6 +21,11 @@ class Octagon : public Figure {
     ~Octagon() {
         size = 0;
     }
+
+    auto operator=(const Octagon<T>& other) -> Octagon<T>&;
+    auto operator=(Octagon<T>&& other) -> Octagon<T>&;
+
+    operator double() const;
 };
 
 template <typename T>
@@ -40,4 +45,40 @@ inline auto operator>>(std::istream& is, Octagon<T>& fig) -> std::istream& {
     }
 
     return is;
+}
+
+template <typename T>
+inline auto operator==(const Octagon<T>& left, const Octagon<T>& right) -> bool {
+    for (size_t i = 0; i != 5; ++i) {
+        for (size_t j = 0; j != 5; ++j) {
+            if (left.points[i] == right.points[j])
+                break;
+
+            if (j == 4)
+                return false;
+        }
+    }
+
+    return true;
+}
+
+template <typename T>
+inline auto Octagon<T>::operator=(const Octagon<T>& other) -> Octagon<T>& {
+    size = other.size;
+    points = other.points;
+
+    return *this;
+}
+
+template <typename T>
+inline auto Octagon<T>::operator=(Octagon<T>&& other) -> Octagon<T>& {
+    size = other.size;
+    points = std::move(other.points);
+
+    return *this;
+}
+
+template <typename T>
+inline Octagon<T>::operator double() const {
+    return (double)fig::surface<Octagon<T>, T>(*this);
 }

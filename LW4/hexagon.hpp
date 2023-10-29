@@ -21,6 +21,11 @@ class Hexagon : public Figure {
     ~Hexagon() {
         size = 0;
     }
+
+    auto operator=(const Hexagon<T>& other) -> Hexagon<T>&;
+    auto operator=(Hexagon<T>&& other) -> Hexagon<T>&;
+
+    operator double() const;
 };
 
 template <typename T>
@@ -40,4 +45,40 @@ inline auto operator>>(std::istream& is, Hexagon<T>& fig) -> std::istream& {
     }
 
     return is;
+}
+
+template <typename T>
+inline auto operator==(const Hexagon<T>& left, const Hexagon<T>& right) -> bool {
+    for (size_t i = 0; i != 5; ++i) {
+        for (size_t j = 0; j != 5; ++j) {
+            if (left.points[i] == right.points[j])
+                break;
+
+            if (j == 4)
+                return false;
+        }
+    }
+
+    return true;
+}
+
+template <typename T>
+inline auto Hexagon<T>::operator=(const Hexagon<T>& other) -> Hexagon<T>& {
+    size = other.size;
+    points = other.points;
+
+    return *this;
+}
+
+template <typename T>
+inline auto Hexagon<T>::operator=(Hexagon<T>&& other) -> Hexagon<T>& {
+    size = other.size;
+    points = std::move(other.points);
+
+    return *this;
+}
+
+template <typename T>
+inline Hexagon<T>::operator double() const {
+    return (double)fig::surface<Hexagon<T>, T>(*this);
 }
