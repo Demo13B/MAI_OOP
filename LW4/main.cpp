@@ -1,4 +1,5 @@
 #include <iostream>
+#include "array.hpp"
 #include "figure.hpp"
 #include "functions.hpp"
 #include "hexagon.hpp"
@@ -6,36 +7,104 @@
 #include "pentagon.hpp"
 
 int main() {
-    std::vector<std::pair<double, double>> v1 = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}};
-    std::vector<std::pair<double, double>> v2 = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}};
-    std::vector<std::pair<double, double>> v3 = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}};
-    Octagon<double> o = Octagon<double>(v1);
-    Pentagon<double> p = Pentagon<double>(v2);
-    Hexagon<double> h = Hexagon<double>(v3);
+    size_t count;
+    std::cout << "How many figures do you want to create?: ";
+    std::cin >> count;
 
-    Pentagon<double> p2 = Pentagon<double>(v2);
+    Array<Figure> f = Array<Figure>(count);
 
-    if (p == p2) {
-        std::cout << "true" << std::endl;
-    } else {
-        std::cout << "false" << std::endl;
+    for (size_t i = 0; i != count; ++i) {
+        char option;
+        std::cout << "Which figure do you want to create? (p - pentagon, h - hexagon, o - octagon): ";
+        std::cin >> option;
+
+        Pentagon<double>* p;
+        Hexagon<double>* h;
+        Octagon<double>* o;
+
+        switch (option) {
+            case 'p':
+                p = new Pentagon<double>;
+                std::cout << "Please, enter the pentagon point coordinates: " << std::endl;
+                std::cin >> *p;
+                f.update_figure(i, p);
+                break;
+
+            case 'h':
+                h = new Hexagon<double>;
+                std::cout << "Please, enter the hexagon point coordinates: " << std::endl;
+                std::cin >> *h;
+                f.update_figure(i, h);
+                break;
+
+            case 'o':
+                o = new Octagon<double>;
+                std::cout << "Please, enter the octagon point coordinates: " << std::endl;
+                std::cin >> *o;
+                f.update_figure(i, o);
+                break;
+        }
     }
 
-    p2 = p;
-    p2 = Pentagon<double>(v1);
+    for (size_t i = 0; i != count; ++i) {
+        const Figure* fig = f[i];
 
-    std::cout << (double)p << std::endl;
-    std::cout << (double)h << std::endl;
-    std::cout << (double)o << std::endl;
+        if (f[i] == nullptr) {
+            std::cout << "The figure has been deleted" << std::endl;
 
-    std::cout << o << std::endl;
-    std::cout << p << std::endl;
-    std::cout << h << std::endl;
+        } else if (typeid(Pentagon<double>) == typeid(*fig)) {
+            std::pair<double, double> center = fig::getMidPoint<Pentagon<double>, double>(*(Pentagon<double>*)f[i]);
+            double surface = fig::surface<Pentagon<double>, double>(*(Pentagon<double>*)f[i]);
 
-    // std::vector<std::pair<int, int> > v = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}};
-    // Octagon<int> o = Octagon<int>(v);
-    // std::cout << o.points[3].first << ' ' << o.points[3].second << std::endl;
+            std::cout << "Figure " << i + 1 << ": Mid point = (" << center.first << ", " << center.second
+                      << "); Surface = " << surface << std::endl;
 
-    // std::pair<int, int> p = getMidPoint<Octagon<int>, int>(o);
-    // std::cout << p.first << " " << p.second << std::endl;
+        } else if (typeid(Hexagon<double>) == typeid(*fig)) {
+            std::pair<double, double> center = fig::getMidPoint<Hexagon<double>, double>(*(Hexagon<double>*)f[i]);
+            double surface = fig::surface<Hexagon<double>, double>(*(Hexagon<double>*)f[i]);
+
+            std::cout << "Figure " << i + 1 << ": Mid point = (" << center.first << ", " << center.second
+                      << "); Surface = " << surface << std::endl;
+
+        } else if (typeid(Octagon<double>) == typeid(*fig)) {
+            std::pair<double, double> center = fig::getMidPoint<Octagon<double>, double>(*(Octagon<double>*)f[i]);
+            double surface = fig::surface<Octagon<double>, double>(*(Octagon<double>*)f[i]);
+
+            std::cout << "Figure " << i + 1 << ": Mid point = (" << center.first << ", " << center.second
+                      << "); Surface = " << surface << std::endl;
+        }
+    }
+
+    std::cout << "Total surface: " << f.common_surface() << std::endl;
+
+    size_t to_delete;
+    std::cout << "How many figures do you want to delete?: ";
+    std::cin >> to_delete;
+
+    if (to_delete > count) {
+        std::cerr << "You want to delete more elements than threre are";
+        return 1;
+    }
+
+    size_t index;
+    for (size_t i = 0; i != to_delete; ++i) {
+        std::cout << "What figure do you want to delete (index)?: ";
+        std::cin >> index;
+
+        f.delete_figure(i);
+    }
+
+    for (size_t i = 0; i != count; ++i) {
+        const Figure* fig = f[i];
+        if (f[i] == nullptr) {
+            std::cout << "The figure has been deleted" << std::endl;
+        } else if (typeid(Pentagon<double>) == typeid(*fig)) {
+            std::cout << *(Pentagon<double>*)f[i];
+        } else if (typeid(Hexagon<double>) == typeid(*fig)) {
+            std::cout << *(Hexagon<double>*)f[i];
+        } else if (typeid(Octagon<double>) == typeid(*fig)) {
+            std::cout << *(Octagon<double>*)f[i];
+        }
+        std::cout << std::endl;
+    }
 }
