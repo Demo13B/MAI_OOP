@@ -25,7 +25,7 @@ class Hexagon : public Figure {
     auto operator=(const Hexagon<T>& other) -> Hexagon<T>&;
     auto operator=(Hexagon<T>&& other) -> Hexagon<T>&;
 
-    operator double() const;
+    operator double() const override;
 };
 
 template <typename T>

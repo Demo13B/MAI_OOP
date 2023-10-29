@@ -25,7 +25,7 @@ class Octagon : public Figure {
     auto operator=(const Octagon<T>& other) -> Octagon<T>&;
     auto operator=(Octagon<T>&& other) -> Octagon<T>&;
 
-    operator double() const;
+    operator double() const override;
 };
 
 template <typename T>

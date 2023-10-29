@@ -1,4 +1,5 @@
 #include <iostream>
+#include "array.hpp"
 #include "figure.hpp"
 #include "functions.hpp"
 #include "hexagon.hpp"
@@ -15,27 +16,11 @@ int main() {
 
     Pentagon<double> p2 = Pentagon<double>(v2);
 
-    if (p == p2) {
-        std::cout << "true" << std::endl;
-    } else {
-        std::cout << "false" << std::endl;
-    }
-
-    p2 = p;
-    p2 = Pentagon<double>(v1);
-
-    std::cout << (double)p << std::endl;
-    std::cout << (double)h << std::endl;
-    std::cout << (double)o << std::endl;
-
-    std::cout << o << std::endl;
-    std::cout << p << std::endl;
-    std::cout << h << std::endl;
-
-    // std::vector<std::pair<int, int> > v = {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {7, 7}, {8, 8}};
-    // Octagon<int> o = Octagon<int>(v);
-    // std::cout << o.points[3].first << ' ' << o.points[3].second << std::endl;
-
-    // std::pair<int, int> p = getMidPoint<Octagon<int>, int>(o);
-    // std::cout << p.first << " " << p.second << std::endl;
+    Array<Figure> Arr(2);
+    Arr.delete_figure(0);
+    Arr.update_figure(0, &p2);
+    std::cout << Arr.common_surface() << std::endl;
+    Arr.update_figure(0, &p);
+    Arr.delete_figure(0);
+    std::cout << Arr.common_surface() << std::endl;
 }

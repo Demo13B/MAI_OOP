@@ -25,7 +25,7 @@ class Pentagon : public Figure {
     auto operator=(const Pentagon<T>& other) -> Pentagon<T>&;
     auto operator=(Pentagon<T>&& other) -> Pentagon<T>&;
 
-    operator double() const;
+    operator double() const override;
 };
 
 template <typename T>
