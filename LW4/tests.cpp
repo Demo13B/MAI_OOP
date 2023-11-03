@@ -530,43 +530,11 @@ TEST(Octagon_int, double_cast) {
 
 // Array tests
 
-TEST(Array, basic_constructor) {
-    Array<Figure> a;
-
-    for (size_t i = 0; i != 100; ++i)
-        EXPECT_EQ(a[i], nullptr);
-}
-
-TEST(Array, size_conrtuctor) {
-    Array<Figure> a(10);
-
-    for (size_t i = 0; i != 10; ++i)
-        EXPECT_EQ(a[i], nullptr);
-}
-
-TEST(Array, update_element) {
-    Array<Figure> a(10);
-    Pentagon<double>* p = new Pentagon<double>();
-    a.update_figure(1, p);
-    EXPECT_EQ(a[1], p);
-    EXPECT_EQ(a[2], nullptr);
-    EXPECT_EQ(a[0], nullptr);
-}
-
-TEST(Array, delete_element) {
-    Array<Figure> a(10);
-    Pentagon<double>* p = new Pentagon<double>();
-    a.update_figure(1, p);
-    EXPECT_EQ(a[1], p);
-    a.delete_figure(1);
-    EXPECT_EQ(a[1], nullptr);
-}
-
 TEST(Array, common_surface) {
-    Array<Figure> a(2);
+    Array<Pentagon<double>> a(2);
     Pentagon<double>* p1 = new Pentagon<double>();
     Pentagon<double>* p2 = new Pentagon<double>();
-    a.update_figure(0, p1);
-    a.update_figure(1, p2);
+    a[0] = *p1;
+    a[1] = *p2;
     EXPECT_EQ(a.common_surface(), 0.0);
 }

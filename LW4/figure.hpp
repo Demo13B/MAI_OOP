@@ -5,5 +5,7 @@ class Figure {
     Figure() = default;
     virtual ~Figure() = default;
 
-    virtual explicit operator double() const = 0;
+    virtual explicit operator double() const {
+        return 0.0;
+    };
 };

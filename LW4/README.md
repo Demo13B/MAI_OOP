@@ -32,105 +32,143 @@
 #include "pentagon.hpp"
 
 int main() {
+    char option;
+    std::cout << "Which figures do you want to create? (p - pentagon, h - hexagon, o - octagon): ";
+    std::cin >> option;
+
     size_t count;
     std::cout << "How many figures do you want to create?: ";
     std::cin >> count;
 
-    Array<Figure> f = Array<Figure>(count);
+    if (option == 'p') {
+        Array<Pentagon<double>> a(count);
 
-    for (size_t i = 0; i != count; ++i) {
-        char option;
-        std::cout << "Which figure do you want to create? (p - pentagon, h - hexagon, o - octagon): ";
-        std::cin >> option;
+        Pentagon<double> p;
 
-        Pentagon<double>* p;
-        Hexagon<double>* h;
-        Octagon<double>* o;
-
-        switch (option) {
-            case 'p':
-                p = new Pentagon<double>;
-                std::cout << "Please, enter the pentagon point coordinates: " << std::endl;
-                std::cin >> *p;
-                f.update_figure(i, p);
-                break;
-
-            case 'h':
-                h = new Hexagon<double>;
-                std::cout << "Please, enter the hexagon point coordinates: " << std::endl;
-                std::cin >> *h;
-                f.update_figure(i, h);
-                break;
-
-            case 'o':
-                o = new Octagon<double>;
-                std::cout << "Please, enter the octagon point coordinates: " << std::endl;
-                std::cin >> *o;
-                f.update_figure(i, o);
-                break;
+        for (size_t i = 0; i != count; ++i) {
+            std::cout << "Please, enter the pentagon point coordinates: " << std::endl;
+            std::cin >> p;
+            a[i] = p;
         }
-    }
 
-    for (size_t i = 0; i != count; ++i) {
-        const Figure* fig = f[i];
-
-        if (f[i] == nullptr) {
-            std::cout << "The figure has been deleted" << std::endl;
-
-        } else if (typeid(Pentagon<double>) == typeid(*fig)) {
-            std::pair<double, double> center = fig::getMidPoint<Pentagon<double>, double>(*(Pentagon<double>*)f[i]);
-            double surface = fig::surface<Pentagon<double>, double>(*(Pentagon<double>*)f[i]);
-
-            std::cout << "Figure " << i + 1 << ": Mid point = (" << center.first << ", " << center.second
-                      << "); Surface = " << surface << std::endl;
-
-        } else if (typeid(Hexagon<double>) == typeid(*fig)) {
-            std::pair<double, double> center = fig::getMidPoint<Hexagon<double>, double>(*(Hexagon<double>*)f[i]);
-            double surface = fig::surface<Hexagon<double>, double>(*(Hexagon<double>*)f[i]);
-
-            std::cout << "Figure " << i + 1 << ": Mid point = (" << center.first << ", " << center.second
-                      << "); Surface = " << surface << std::endl;
-
-        } else if (typeid(Octagon<double>) == typeid(*fig)) {
-            std::pair<double, double> center = fig::getMidPoint<Octagon<double>, double>(*(Octagon<double>*)f[i]);
-            double surface = fig::surface<Octagon<double>, double>(*(Octagon<double>*)f[i]);
+        for (size_t i = 0; i != count; ++i) {
+            std::pair<double, double> center = fig::getMidPoint<Pentagon<double>, double>(a[i]);
+            double surface = fig::surface<Pentagon<double>, double>(a[i]);
 
             std::cout << "Figure " << i + 1 << ": Mid point = (" << center.first << ", " << center.second
                       << "); Surface = " << surface << std::endl;
         }
-    }
 
-    std::cout << "Total surface: " << f.common_surface() << std::endl;
+        std::cout << "Total surface: " << a.common_surface() << std::endl;
 
-    size_t to_delete;
-    std::cout << "How many figures do you want to delete?: ";
-    std::cin >> to_delete;
+        size_t to_delete;
+        std::cout << "How many figures do you want to delete?: ";
+        std::cin >> to_delete;
 
-    if (to_delete > count) {
-        std::cerr << "You want to delete more elements than threre are";
+        if (to_delete > count) {
+            std::cerr << "You want to delete more elements than threre are";
+            return 1;
+        }
+
+        size_t index;
+        Pentagon<double> pent;
+        for (size_t i = 0; i != to_delete; ++i) {
+            std::cout << "What figure do you want to delete (index)?: ";
+            std::cin >> index;
+            a[index] = pent;
+        }
+
+        for (size_t i = 0; i != count; ++i) {
+            std::cout << a[i] << std::endl;
+        }
+
+    } else if (option == 'h') {
+        Array<Hexagon<double>> a(count);
+
+        Hexagon<double> h;
+
+        for (size_t i = 0; i != count; ++i) {
+            std::cout << "Please, enter the hexagon point coordinates: " << std::endl;
+            std::cin >> h;
+            a[i] = h;
+        }
+
+        for (size_t i = 0; i != count; ++i) {
+            std::pair<double, double> center = fig::getMidPoint<Hexagon<double>, double>(a[i]);
+            double surface = fig::surface<Hexagon<double>, double>(a[i]);
+
+            std::cout << "Figure " << i + 1 << ": Mid point = (" << center.first << ", " << center.second
+                      << "); Surface = " << surface << std::endl;
+        }
+
+        std::cout << "Total surface: " << a.common_surface() << std::endl;
+
+        size_t to_delete;
+        std::cout << "How many figures do you want to delete?: ";
+        std::cin >> to_delete;
+
+        if (to_delete > count) {
+            std::cerr << "You want to delete more elements than threre are";
+            return 1;
+        }
+
+        size_t index;
+        Hexagon<double> hex;
+        for (size_t i = 0; i != to_delete; ++i) {
+            std::cout << "What figure do you want to delete (index)?: ";
+            std::cin >> index;
+            a[index] = hex;
+        }
+
+        for (size_t i = 0; i != count; ++i) {
+            std::cout << a[i] << std::endl;
+        }
+
+    } else if (option == 'o') {
+        Array<Octagon<double>> a(count);
+
+        Octagon<double> o;
+
+        for (size_t i = 0; i != count; ++i) {
+            std::cout << "Please, enter the octagon point coordinates: " << std::endl;
+            std::cin >> o;
+            a[i] = o;
+        }
+
+        for (size_t i = 0; i != count; ++i) {
+            std::pair<double, double> center = fig::getMidPoint<Octagon<double>, double>(a[i]);
+            double surface = fig::surface<Octagon<double>, double>(a[i]);
+
+            std::cout << "Figure " << i + 1 << ": Mid point = (" << center.first << ", " << center.second
+                      << "); Surface = " << surface << std::endl;
+        }
+
+        std::cout << "Total surface: " << a.common_surface() << std::endl;
+
+        size_t to_delete;
+        std::cout << "How many figures do you want to delete?: ";
+        std::cin >> to_delete;
+
+        if (to_delete > count) {
+            std::cerr << "You want to delete more elements than threre are";
+            return 1;
+        }
+
+        size_t index;
+        Octagon<double> oct;
+        for (size_t i = 0; i != to_delete; ++i) {
+            std::cout << "What figure do you want to delete (index)?: ";
+            std::cin >> index;
+            a[index] = oct;
+        }
+
+        for (size_t i = 0; i != count; ++i) {
+            std::cout << a[i] << std::endl;
+        }
+
+    } else {
+        std::cout << "Wrong option";
         return 1;
-    }
-
-    size_t index;
-    for (size_t i = 0; i != to_delete; ++i) {
-        std::cout << "What figure do you want to delete (index)?: ";
-        std::cin >> index;
-
-        f.delete_figure(i);
-    }
-
-    for (size_t i = 0; i != count; ++i) {
-        const Figure* fig = f[i];
-        if (f[i] == nullptr) {
-            std::cout << "The figure has been deleted" << std::endl;
-        } else if (typeid(Pentagon<double>) == typeid(*fig)) {
-            std::cout << *(Pentagon<double>*)f[i];
-        } else if (typeid(Hexagon<double>) == typeid(*fig)) {
-            std::cout << *(Hexagon<double>*)f[i];
-        } else if (typeid(Octagon<double>) == typeid(*fig)) {
-            std::cout << *(Octagon<double>*)f[i];
-        }
-        std::cout << std::endl;
     }
 }
 ```
@@ -144,7 +182,9 @@ class Figure {
     Figure() = default;
     virtual ~Figure() = default;
 
-    virtual explicit operator double() const = 0;
+    virtual explicit operator double() const {
+        return 0.0;
+    };
 };
 ```
 
@@ -458,50 +498,40 @@ template <class T>
 class Array {
    private:
     size_t _size;
-    std::unique_ptr<T*> _arr;
+    std::unique_ptr<T[]> _arr;
 
    public:
     Array();
     Array(size_t size);
     ~Array();
 
-    auto operator[](size_t index) -> T*;
+    auto operator[](size_t index) -> T&;
 
-    auto delete_figure(size_t index) -> void;
-    auto update_figure(size_t index, T* f) -> void;
     auto common_surface() -> double;
 };
 
 template <class T>
 inline Array<T>::Array() {
-    _size = 100;
-    _arr.reset(new T*[_size]);
-
-    for (size_t i = 0; i != _size; ++i)
-        _arr.get()[i] = nullptr;
+    _size = 0;
+    _arr = nullptr;
 }
 
 template <class T>
 inline Array<T>::Array(size_t size) {
     _size = size;
-    _arr.reset(new T*[_size]);
-
-    for (size_t i = 0; i != _size; ++i)
-        _arr.get()[i] = nullptr;
+    _arr.reset(new T[_size]);
 }
 
 template <class T>
 inline Array<T>::~Array() {
-    for (size_t i = 0; i != _size; ++i) {
-        if (_arr.get()[i] != nullptr)
-            delete _arr.get()[i];
+    if (_size > 0) {
+        _size = 0;
+        _arr = nullptr;
     }
-    _arr = nullptr;
-    _size = 0;
 }
 
 template <class T>
-inline auto Array<T>::operator[](size_t index) -> T* {
+inline auto Array<T>::operator[](size_t index) -> T& {
     if (index >= _size)
         throw std::invalid_argument("The array index is out of range");
 
@@ -509,28 +539,10 @@ inline auto Array<T>::operator[](size_t index) -> T* {
 }
 
 template <class T>
-inline auto Array<T>::delete_figure(size_t index) -> void {
-    if (index >= _size)
-        throw std::invalid_argument("The array index is out of range");
-
-    delete _arr.get()[index];
-    _arr.get()[index] = nullptr;
-}
-
-template <class T>
-inline auto Array<T>::update_figure(size_t index, T* f) -> void {
-    if (index >= _size)
-        throw std::invalid_argument("The array index is out of range");
-
-    _arr.get()[index] = f;
-}
-
-template <class T>
 inline auto Array<T>::common_surface() -> double {
     double res = 0.0;
     for (size_t i = 0; i != _size; ++i) {
-        if (_arr.get()[i] != nullptr)
-            res += (double)*_arr.get()[i];
+        res += (double)_arr.get()[i];
     }
 
     return res;
@@ -1071,46 +1083,15 @@ TEST(Octagon_int, double_cast) {
 
 // Array tests
 
-TEST(Array, basic_constructor) {
-    Array<Figure> a;
-
-    for (size_t i = 0; i != 100; ++i)
-        EXPECT_EQ(a[i], nullptr);
-}
-
-TEST(Array, size_conrtuctor) {
-    Array<Figure> a(10);
-
-    for (size_t i = 0; i != 10; ++i)
-        EXPECT_EQ(a[i], nullptr);
-}
-
-TEST(Array, update_element) {
-    Array<Figure> a(10);
-    Pentagon<double>* p = new Pentagon<double>();
-    a.update_figure(1, p);
-    EXPECT_EQ(a[1], p);
-    EXPECT_EQ(a[2], nullptr);
-    EXPECT_EQ(a[0], nullptr);
-}
-
-TEST(Array, delete_element) {
-    Array<Figure> a(10);
-    Pentagon<double>* p = new Pentagon<double>();
-    a.update_figure(1, p);
-    EXPECT_EQ(a[1], p);
-    a.delete_figure(1);
-    EXPECT_EQ(a[1], nullptr);
-}
-
 TEST(Array, common_surface) {
-    Array<Figure> a(2);
+    Array<Pentagon<double>> a(2);
     Pentagon<double>* p1 = new Pentagon<double>();
     Pentagon<double>* p2 = new Pentagon<double>();
-    a.update_figure(0, p1);
-    a.update_figure(1, p2);
+    a[0] = *p1;
+    a[1] = *p2;
     EXPECT_EQ(a.common_surface(), 0.0);
 }
+
 ```
 
 ### CMakeLists.txt
