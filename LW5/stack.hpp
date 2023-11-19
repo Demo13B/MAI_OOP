@@ -12,6 +12,114 @@ class Stack {
     Alloc _alloc;
 
    public:
+    class Iterator {
+       private:
+        friend Stack;
+        T** _p;
+
+       public:
+        using value_type = T;
+        using pointer = T*;
+        using reference = T&;
+        using difference_type = ptrdiff_t;
+        using iterator_category = std::forward_iterator_tag;
+
+        Iterator()
+            : _p(nullptr) {}
+
+        Iterator(T** p)
+            : _p(p) {}
+
+        ~Iterator() noexcept {
+            _p = nullptr;
+        }
+
+        inline auto operator*() const -> reference {
+            return **_p;
+        }
+
+        inline auto operator++() -> Iterator& {
+            ++_p;
+            return *this;
+        }
+
+        inline auto operator++(int) -> Iterator {
+            Iterator tmp = *this;
+            ++_p;
+            return tmp;
+        }
+
+        inline auto operator==(const Iterator& other) const -> bool {
+            return _p == other._p;
+        }
+
+        inline auto operator!=(const Iterator& other) const -> bool {
+            return _p != other._p;
+        }
+    };
+
+    class ConstIterator {
+       private:
+        friend Stack;
+        T** _p;
+
+       public:
+        using value_type = T;
+        using pointer = T*;
+        using reference = T&;
+        using difference_type = ptrdiff_t;
+        using iterator_category = std::forward_iterator_tag;
+
+        ConstIterator()
+            : _p(nullptr) {}
+
+        ConstIterator(T** p)
+            : _p(p) {}
+
+        ~ConstIterator() noexcept {
+            _p = nullptr;
+        }
+
+        inline auto operator*() const -> reference {
+            return **_p;
+        }
+
+        inline auto operator++() const -> ConstIterator& {
+            ++_p;
+            return *this;
+        }
+
+        inline auto operator++(int) const -> ConstIterator {
+            ConstIterator tmp = *this;
+            ++_p;
+            return tmp;
+        }
+
+        inline auto operator==(const ConstIterator& other) const -> bool {
+            return _p == other._p;
+        }
+
+        inline auto operator!=(const ConstIterator& other) const -> bool {
+            return _p != other._p;
+        }
+    };
+
+    auto begin() noexcept -> Iterator {
+        return Iterator(_data);
+    }
+
+    auto end() noexcept -> Iterator {
+        return Iterator(_data + _size);
+    }
+
+    auto cbegin() const noexcept -> ConstIterator {
+        return ConstIterator(_data);
+    }
+
+    auto cend() const noexcept -> ConstIterator {
+        return ConstIterator(_data + _size);
+    }
+
     Stack()
         : _size(0), _alloc() { _data = new T*[MAX_SIZE]; }
 
@@ -29,6 +137,9 @@ class Stack {
             Alloc_traits::destroy(_alloc, _data[i]);
             Alloc_traits::deallocate(_alloc, _data[i], 1);
         }
+
+        delete[] _data;
+        _size = 0;
     }
 
     inline auto size() const -> size_t {
