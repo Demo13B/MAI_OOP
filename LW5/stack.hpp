@@ -80,16 +80,17 @@ class Stack {
             _p = nullptr;
         }
 
-        inline auto operator*() const -> reference {
-            return **_p;
+        inline auto operator*() const -> value_type {
+            value_type res = **_p;
+            return res;
         }
 
-        inline auto operator++() const -> ConstIterator& {
+        inline auto operator++() -> ConstIterator& {
             ++_p;
             return *this;
         }
 
-        inline auto operator++(int) const -> ConstIterator {
+        inline auto operator++(int) -> ConstIterator {
             ConstIterator tmp = *this;
             ++_p;
             return tmp;
@@ -124,8 +125,7 @@ class Stack {
         : _size(0), _alloc() { _data = new T*[MAX_SIZE]; }
 
     Stack(const Stack<T, MAX_SIZE, Alloc>& other) {
-        _alloc;
-        _size = other.size;
+        _size = other._size;
         for (size_t i = 0; i != _size; ++i) {
             _data[i] = Alloc_traits::allocate(_alloc, 1);
             *_data[i] = *other._data[i];
