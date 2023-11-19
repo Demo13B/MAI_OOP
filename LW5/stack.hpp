@@ -68,5 +68,21 @@ class Stack {
 
         return *this;
     }
+
+    inline auto operator[](size_t index) const -> T {
+        T value = *_data[index];
+        return value;
+    }
 };
+
+template <class T, size_t MAX_SIZE = 100, class Alloc>
+inline auto operator<<(std::ostream& os, const Stack<T, MAX_SIZE, Alloc>& s) -> std::ostream& {
+    os << "Stack elements: ";
+
+    for (size_t i = 0; i != s.size(); ++i) {
+        os << s[i] << " ";
+    }
+
+    return os;
+}
 }  // namespace mai
