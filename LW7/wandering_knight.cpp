@@ -16,8 +16,8 @@ void Wandering_Knight::print() {
 }
 
 bool Wandering_Knight::fight(std::shared_ptr<Dragon> other) {
-    fight_notify(other, false);
-    return false;
+    fight_notify(other, true);
+    return true;
 }
 
 bool Wandering_Knight::fight(std::shared_ptr<Wandering_Knight> other) {
@@ -26,8 +26,8 @@ bool Wandering_Knight::fight(std::shared_ptr<Wandering_Knight> other) {
 }
 
 bool Wandering_Knight::fight(std::shared_ptr<Elf> other) {
-    fight_notify(other, true);
-    return false;
+    fight_notify(other, false);
+    return true;
 }
 
 void Wandering_Knight::save(std::ostream& os) {

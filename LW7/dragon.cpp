@@ -16,12 +16,12 @@ void Dragon::print() {
 }
 
 bool Dragon::fight(std::shared_ptr<Dragon> other) {
-    fight_notify(other, false);
+    fight_notify(other, true);
     return false;
 }
 
 bool Dragon::fight(std::shared_ptr<Wandering_Knight> other) {
-    fight_notify(other, false);
+    fight_notify(other, true);
     return false;
 }
 

@@ -17,16 +17,16 @@ void Elf::print() {
 
 bool Elf::fight(std::shared_ptr<Dragon> other) {
     fight_notify(other, false);
-    return false;
+    return true;
 }
 
 bool Elf::fight(std::shared_ptr<Wandering_Knight> other) {
-    fight_notify(other, false);
+    fight_notify(other, true);
     return false;
 }
 
 bool Elf::fight(std::shared_ptr<Elf> other) {
-    fight_notify(other, true);
+    fight_notify(other, false);
     return false;
 }
 
