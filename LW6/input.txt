@@ -1,0 +1,4 @@
+Dragon Belthromar 3 4
+Wandering_Knight Emilia 2 3
+Elf Dobby 4 3
+Dragon Alsiel 100 100

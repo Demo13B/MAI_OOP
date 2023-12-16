@@ -15,7 +15,7 @@ void Dragon::print(std::ostream& out) {
 }
 
 void Dragon::accept(NPC* attacker, const int& distance) {
-    if (alive && (dynamic_cast<Wandering_Knight*>(attacker) || dynamic_cast<Dragon*>(attacker))) {
+    if (alive && (dynamic_cast<Wandering_Knight*>(attacker) || (dynamic_cast<Dragon*>(attacker) && attacker != this))) {
         bool win = is_close(*attacker, distance);
         if (win)
             alive = false;

@@ -6,8 +6,7 @@
 std::shared_ptr<NPC> factory(std::istream& in) {
     std::string type, name;
     int x, y;
-    char c;
-    in >> type >> name >> c >> x >> c >> y >> c;
+    in >> type >> name >> x >> y;
     std::shared_ptr<NPC> res;
     if (type == "Dragon") {
         res = std::make_shared<Dragon>(x, y, name);
