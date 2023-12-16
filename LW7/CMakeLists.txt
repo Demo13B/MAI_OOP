@@ -4,4 +4,10 @@ project(Balagurs_Fate_3_Dynamic)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(main main.cpp)
+add_executable(main 
+    main.cpp
+    npc.cpp
+    dragon.cpp
+    wandering_knight.cpp
+    elf.cpp
+)
